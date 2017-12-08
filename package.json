@@ -8,9 +8,10 @@
     "@nuxtjs/pwa": "latest",
     "babel-preset-env": "^1.6.1",
     "buefy": "^0.6.2",
+    "nuxt": "latest",
+    "vue-packery-plugin": "^1.0.4",
     "vue-server-renderer": "2.5.9",
-    "vue-template-compiler": "2.5.9",
-    "nuxt": "latest"
+    "vue-template-compiler": "2.5.9"
   },
   "scripts": {
     "dev": "nuxt",

@@ -2,7 +2,12 @@ module.exports = {
   /*
   ** Build configuration
   */
-  build: {},
+  build: {
+    vendor: [
+      '~/plugins/vuepackeryplugin'
+    ]
+
+  },
   /*
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset
@@ -19,7 +24,8 @@ module.exports = {
     theme_color: '#3B8070'
   },
   plugins: [
-'~/plugins/buefy'
+    '~/plugins/buefy',
+    {src: '~/plugins/vuepackeryplugin', ssr: false}
   ],
   /*
   ** Modules
