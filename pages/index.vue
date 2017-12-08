@@ -58,7 +58,7 @@
 <section>
   <div class="steps container is-fluid">
   <div class="columns is-multiline is-variable is-5" v-packery='{itemSelector: ".packery-item", percentPosition: true,}'>
-      <div v-packery-item v-for="(reg, index) in steps" :key="reg.index" :class="`size-${reg.size}`" class="column packery-item">
+      <div v-packery-item v-for="(reg, index) in steps" :key="index" :class="`size-${reg.size} step-${index}`" class="column packery-item">
         <article>
         <div class="notification step is-pink-outline is-bold">
         <h4 class="title">
@@ -115,7 +115,7 @@
 
 <style scoped>
 .steps {margin-top: 48px; padding: calc(24px + 2vw);font-weight: 200;}
-.notification {padding: 36px; color:#B19998;}
+.notification {padding: 36px; color:#B19998;flex: 1 0 auto;}
 a.button span {color:#7a707a;font-weight: 700;}
 .is-pink {background: #FEEAE9;}
 .step .title {font-size:calc( 24px + 2vw)}
@@ -142,12 +142,15 @@ a.button span {color:#7a707a;font-weight: 700;}
   .columns.is-variable .column {
     padding-left: 0;
     padding-right: 0;
+    display: flex;
   }
   .title {letter-spacing: -.2rem;}
 .is-pink .title {color: #7957D5}
   .network.offline .circle {
     background: red;
   }
+  .packery-item {display: flex;
+   flex-direction: column;}
 .packery-item article {padding-right: 4px; padding-left: 4px; padding-top: 4px; padding-bottom: 4px}
   .packery-item.size-3 {
     width: 100%;
@@ -184,7 +187,7 @@ a.button span {color:#7a707a;font-weight: 700;}
 .packery-item.size-2 {
   width: 50%;
 }
-.packery-item.size-2 {
+.packery-item.size-3 {
   width: 75%;
 }
    }
@@ -199,4 +202,5 @@ a.button span {color:#7a707a;font-weight: 700;}
   width: 60%;
 }
    }
+   .step-intro .notification {border-color:#fff !important;background-color:#fff !important;}
 </style>
