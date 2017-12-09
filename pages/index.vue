@@ -197,7 +197,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
 .packery-item[data-size="1"] {
   width: 50%;
 }
-.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
+.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
   width: 100%;
 }
    }
@@ -205,7 +205,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
 .packery-item[data-size="1"] {
   width: 33%;
 }
-.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
+.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
   width: 66%;
 }
    }
@@ -213,7 +213,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
 .packery-item[data-size="1"] {
   width: 25%;
 }
-.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
+.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
   width: 50%;
 }
 .packery-item[data-size="3"] {
@@ -224,7 +224,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
 .packery-item[data-size="1"] {
   width: 20%;
 }
-.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
+.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
   width: 40%;
 }
 .packery-item[data-size="3"]{

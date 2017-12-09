@@ -6,7 +6,8 @@ module.exports = {
     vendor: [
       '~/plugins/vuepackeryplugin'
     ]
-
+  },
+  render: {
   },
   /*
   ** Headers
@@ -24,13 +25,12 @@ module.exports = {
     theme_color: '#3B8070'
   },
   plugins: [
-    '~/plugins/buefy',
     {src: '~/plugins/vuepackeryplugin', ssr: false}
   ],
   /*
   ** Modules
   */
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa', '@nuxtjs/bulma'
   ]
 }
