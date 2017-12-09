@@ -9,6 +9,12 @@ module.exports = {
   },
   render: {
   },
+  routeParams: {
+    '/:id': function () {
+      const ids = this.$store.state.regimen.step.id
+      return ids.id
+    }
+  },
   /*
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset

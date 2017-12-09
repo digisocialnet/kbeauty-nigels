@@ -58,24 +58,43 @@
 <section>
   <div class="steps container is-fluid">
 
-  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true}">
-      <div v-packery-item v-for="(step, index) in steps" v-bind:data-size="step.size" v-bind:key="step.id" @click="step.clicked = !step.clicked" :index="index" class="column packery-item">
+  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 40}">
+<div v-packery-item v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column packery-item">
         <article>
-        <div class="notification step is-pink-outline is-bold">
-          <figure v-if="step.image" class="image is-1by1">
-          <img :src="step.image">
-          </figure>
+        <div class="notification step is-light is-bold">
         <h4 class="title">
-        {{step.heading}}
+        {{steps.intro.heading}}
       </h4>
         <h5>
-         {{step.text}}
+         {{steps.intro.text}}
       </h5>
-       <p v-if="step.clicked">
-         {{step.fulltext}}
+       <p>
+         {{steps.intro.fulltext}}
        </p>
 
-    <a class="button is-danger">Learn More</a>
+    <a class="button is-danger is-outlined">Learn More</a>
+
+        </div>
+       </article>
+      </div>
+      <div v-packery-item v-for="(stp, index) in steps.regimen" v-bind:data-size="stp.size | booleanfilt" :index="index" v-bind:key="stp.id" @click="stp.clicked = !stp.clicked, stp.size = !stp.size" class="column packery-item">
+        <article>
+        <div class="notification step is-pink-outline is-bold">
+          <figure v-if="stp.image" class="image is-1by1">
+          <img :src="stp.image">
+          </figure>
+        <h4 class="title">
+        {{stp.heading}}
+      </h4>
+        <h5>
+         {{stp.text}}
+      </h5>
+      <transition name="fade">
+       <p v-if="stp.clicked">
+         {{stp.fulltext}}
+       </p>
+</transition>
+    <a class="button is-danger is-outlined">Learn More</a>
 
         </div>
        </article>
@@ -96,19 +115,16 @@
 
       }
     },
-    computed: {
-    steps: {
-    get () {
-      return this.$store.state.regimen;
+    filters: {
+booleanfilt (value) {
+return Boolean(value)
+}
     },
-    set (value) {
-      this.$store.commit('SET_REGIMEN', value)
+    computed: {
+    steps() {
+      return this.$store.state;
     }
   },
-    },
-    updated() {
-
-    },
     mounted () {
 
 
@@ -121,12 +137,17 @@
       window.addEventListener('online', this._toggleNetworkStatus)
     },
     methods: {
+      expand ($event) {
+
+   this.$store.commit('SET_REGIMEN', value)
+
+  },
                 toggle (clicked, $event) {
 
 
      event.currentTarget.classList.toggle('expand')
      event.currentTarget.classList.toggle('active')
-      this.$store.commit('SET_REGIMEN', this.steps)
+     this.$store.commit('SET_REGIMEN', value)
     },
       _toggleNetworkStatus ({ type }) {
         this.online = type === 'online'
@@ -134,23 +155,39 @@
 
     },
     destroyed () {
-      window.removeEventListener('offline', this._toggleNetworkStatus)
-      window.removeEventListener('online', this._toggleNetworkStatus)
+      // window.removeEventListener('offline', this._toggleNetworkStatus)
+      // window.removeEventListener('online', this._toggleNetworkStatus)
     }
   }
 </script>
 
 <style scoped>
 .steps {margin-top: 48px; padding: calc(24px + 2vw);font-weight: 200;}
+.fade-enter-active, .fade-leave-active {
+  overflow-y: hidden;
+	max-height: 800px;
+  	transition-property: all;
+	transition-duration: .5s;
+  transition-delay: .2s;
+	transition-timing-function: ease-out;
+}
+.fade-enter, .fade-leave-to {
+  max-height: 0;
+  	transition-property: all;
+	transition-duration: .5s;
+  transition-delay: .25s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
 .notification {padding: 36px; color:#B19998;flex: 1 0 auto;}
 a.button span {color:#7a707a;font-weight: 700;}
 .is-pink {background: #FEEAE9;}
 .step .title {font-size:calc( 24px + 2vw)}
 .grid-sizer {height: 200px;}
-figure img {border-radius: 8px;background: #fff;padding: 12px;}
+figure {margin-bottom:16px;}
+figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #FEEAE9;pointer-events:none;}
 .expand, .active {width :100%;min-height: 50vh;transform: scale3d(20);transition: .4s all;}
-.is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #FEF3F2;transition: .6s background-color ease-in, 1s border-color ease-in-out;}
-.is-pink-outline:hover {border:2px solid #FFCDCA;background: #FEF3F2;transition: .6s background-color ease-out, .3s border-color ease-in-out;}
+.is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #fff;transition: .6s background-color ease-in, 1s border-color ease-in-out, .4s transform ease;}
+.is-pink-outline:hover {background: #FEF3F2;border:2px solid #FFCDCA;transition: 1.3s background-color ease-out, .3s border-color ease-in-out, .2s transform cubic-bezier(0, 1, 0.5, 1); transform: scale(1.03);z-index:100}
 .logo {height:24px;width:auto;fill:#7a707a;}
 .hero.is-pink .title {color:#1D3C65;font-weight: 100;font-size:calc( 84px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
   .network {
@@ -181,53 +218,51 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
   .packery-item {display: flex;
    flex-direction: column;}
 .packery-item article {padding-right: 4px; padding-left: 4px; padding-top: 4px; padding-bottom: 4px}
-  .packery-item.size-3 {
-    width: 100%;
-  }
+
 
   @media (min-width: 280px) {
-.packery-item[data-size="1"] {
+.packery-item, .packery-item[data-size="false"] {
   width: 100%;
 }
-.packery-item[data-size="2"] {
+.packery-item[data-size="true"] {
   width: 100%;
 }
    }
   @media (min-width: 800px) {
-.packery-item[data-size="1"] {
+.packery-item, .packery-item[data-size="false"] {
   width: 50%;
 }
-.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
+.packery-item[data-size="true"],.active.packery-item[data-size="true"] {
   width: 100%;
 }
    }
   @media (min-width: 1080px) {
-.packery-item[data-size="1"] {
+.packery-item, .packery-item[data-size="false"] {
   width: 33%;
 }
-.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
+.packery-item, .packery-item[data-size="true"],.active.packery-item[data-size="true"] {
   width: 66%;
 }
    }
   @media (min-width: 1200px) {
-.packery-item[data-size="1"] {
+.packery-item, .packery-item[data-size="false"] {
   width: 25%;
 }
-.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
+.packery-item[data-size="true"],.active.packery-item[data-size="false"] {
   width: 50%;
 }
-.packery-item[data-size="3"] {
+.packery-item[data-size="2"] {
   width: 75%;
 }
    }
      @media (min-width: 1601px) {
-.packery-item[data-size="1"] {
+.packery-item, .packery-item[data-size="false"] {
   width: 20%;
 }
-.packery-item[data-size="2"],.active.packery-item[data-size="1"] {
+.packery-item[data-size="true"],.active.packery-item[data-size="false"] {
   width: 40%;
 }
-.packery-item[data-size="3"]{
+.packery-item[data-size="2"]{
   width: 60%;
 }
    }
