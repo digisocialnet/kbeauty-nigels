@@ -58,18 +58,21 @@
 <section>
   <div class="steps container is-fluid">
 
-  <div class="columns is-multiline is-variable is-5" v-packery='{itemSelector: ".packery-item", percentPosition: true, isLayoutInstant: true, stagger: 30}'>
-      <div v-packery-item v-for="(reg, key, index) in steps" :data-box-id="index" :class="{ Active: reg.clicked }" :data-clicked="(reg.clicked)" @click="toggle(reg.clicked)" :index="index" :key="key" class="column packery-item">
+  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 30}">
+      <div v-packery-item v-for="(step, index) in steps" v-bind:key="step.id" @click="toggle(step.clicked)" :index="index" class="column packery-item">
         <article>
         <div class="notification step is-pink-outline is-bold">
+          <figure v-if="step.image" class="image is-1by1">
+          <img :src="step.image">
+          </figure>
         <h4 class="title">
-        {{reg.heading}}
+        {{step.heading}}
       </h4>
         <p>
-         {{reg.text}}
+         {{step.text}}
        </p>
-       <p :index="index" :key="key" v-if="(reg.clicked)">
-         {{reg.fulltext}}
+       <p v-bind:key="step.id" v-show="step.clicked">
+         {{step.fulltext}}
        </p>
         </div>
        </article>
@@ -91,12 +94,16 @@
       }
     },
     computed: {
-    steps() {
+    steps: {
+    get () {
       return this.$store.state.regimen;
+    },
+    set (value) {
+      this.$store.commit('SET_REGIMEN', value)
     }
+  },
     },
     updated() {
-this.packeryDraw()
 
     },
     mounted () {
@@ -112,11 +119,9 @@ this.packeryDraw()
     },
     methods: {
                 toggle (clicked, $event) {
-      clicked = !clicked
-      event.currentTarget.classList.toggle('expand')
-      event.packeryDraw()
 
 
+      this.currentTarget.classList.toggle('expand')
     },
       _toggleNetworkStatus ({ type }) {
         this.online = type === 'online'
@@ -137,7 +142,8 @@ a.button span {color:#7a707a;font-weight: 700;}
 .is-pink {background: #FEEAE9;}
 .step .title {font-size:calc( 24px + 2vw)}
 .grid-sizer {height: 200px;}
-.expand, .active {width :100%;transition: .4s all;}
+figure img {border-radius: 8px;background: #fff;padding: 12px;}
+.expand, .active {width :100%;min-height: 50vh;transition: .4s all;}
 .is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #FEF3F2;transition: .6s background-color ease-in, 1s border-color ease-in-out;}
 .is-pink-outline:hover {border:2px solid #FFCDCA;background: #FEF3F2;transition: .6s background-color ease-out, .3s border-color ease-in-out;}
 .logo {height:24px;width:auto;fill:#7a707a;}
