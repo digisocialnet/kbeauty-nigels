@@ -1,6 +1,6 @@
 <template>
 <div>
- <section class="hero is-pink is-bold">
+<section class="hero is-pink is-bold">
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
@@ -58,8 +58,8 @@
 <section>
   <div class="steps container is-fluid">
 
-  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 30}">
-      <div v-packery-item v-for="(step, index) in steps" v-bind:key="step.id" @click="toggle(step.clicked)" :index="index" class="column packery-item">
+  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true}">
+      <div v-packery-item v-for="(step, index) in steps" v-bind:data-size="step.size" v-bind:key="step.id" @click="step.clicked = !step.clicked" :index="index" class="column packery-item">
         <article>
         <div class="notification step is-pink-outline is-bold">
           <figure v-if="step.image" class="image is-1by1">
@@ -68,12 +68,15 @@
         <h4 class="title">
         {{step.heading}}
       </h4>
-        <p>
+        <h5>
          {{step.text}}
-       </p>
-       <p v-bind:key="step.id" v-show="step.clicked">
+      </h5>
+       <p v-if="step.clicked">
          {{step.fulltext}}
        </p>
+
+    <a class="button is-danger">Learn More</a>
+
         </div>
        </article>
       </div>
@@ -121,7 +124,9 @@
                 toggle (clicked, $event) {
 
 
-      this.currentTarget.classList.toggle('expand')
+     event.currentTarget.classList.toggle('expand')
+     event.currentTarget.classList.toggle('active')
+      this.$store.commit('SET_REGIMEN', this.steps)
     },
       _toggleNetworkStatus ({ type }) {
         this.online = type === 'online'
@@ -143,7 +148,7 @@ a.button span {color:#7a707a;font-weight: 700;}
 .step .title {font-size:calc( 24px + 2vw)}
 .grid-sizer {height: 200px;}
 figure img {border-radius: 8px;background: #fff;padding: 12px;}
-.expand, .active {width :100%;min-height: 50vh;transition: .4s all;}
+.expand, .active {width :100%;min-height: 50vh;transform: scale3d(20);transition: .4s all;}
 .is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #FEF3F2;transition: .6s background-color ease-in, 1s border-color ease-in-out;}
 .is-pink-outline:hover {border:2px solid #FFCDCA;background: #FEF3F2;transition: .6s background-color ease-out, .3s border-color ease-in-out;}
 .logo {height:24px;width:auto;fill:#7a707a;}
@@ -169,7 +174,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
     display: flex;
   }
   .title {letter-spacing: -.2rem;}
-.is-pink .title {color: #7957D5}
+.is-pink .title {color: #7957D5;}
   .network.offline .circle {
     background: red;
   }
@@ -181,48 +186,48 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;}
   }
 
   @media (min-width: 280px) {
-.packery-item.size-1 {
+.packery-item[data-size="1"] {
   width: 100%;
 }
-.packery-item.size-2 {
+.packery-item[data-size="2"] {
   width: 100%;
 }
    }
   @media (min-width: 800px) {
-.packery-item.size-1 {
+.packery-item[data-size="1"] {
   width: 50%;
 }
-.packery-item.size-2 {
+.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
   width: 100%;
 }
    }
   @media (min-width: 1080px) {
-.packery-item.size-1 {
+.packery-item[data-size="1"] {
   width: 33%;
 }
-.packery-item.size-2 {
+.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
   width: 66%;
 }
    }
   @media (min-width: 1200px) {
-.packery-item.size-1 {
+.packery-item[data-size="1"] {
   width: 25%;
 }
-.packery-item.size-2 {
+.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
   width: 50%;
 }
-.packery-item.size-3 {
+.packery-item[data-size="3"] {
   width: 75%;
 }
    }
      @media (min-width: 1601px) {
-.packery-item.size-1 {
+.packery-item[data-size="1"] {
   width: 20%;
 }
-.packery-item.size-2 {
+.packery-item[data-size="2"],.expand.packery-item[data-size="1"] {
   width: 40%;
 }
-.packery-item.size-3 {
+.packery-item[data-size="3"]{
   width: 60%;
 }
    }
