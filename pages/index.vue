@@ -127,7 +127,7 @@ return Boolean(value)
 
 <style scoped>
 .step-number {top:20px;right:20px;margin-right: 12px;position:absolute;font-size: 1.5rem;background: #1D3C65;padding:6px 18px;border-radius:50%;display: inline-block;color:#fff;font-weight:900;display: flex;align-items: center;justify-content: center;}
-.steps {margin-top: 14px; padding: calc(24px + 2vw);font-weight: 200;}
+.steps {margin-top: 0; padding: calc(24px + 2vw);font-weight: 200;}
 .slide-enter-active, .slide-leave-active {
   overflow-y: hidden;
 	max-height: 800px;
@@ -161,7 +161,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
     font-size: 1rem;
   }
   .hero.is-pink .subtitle {color:#a89aa8;font-weight: 400;font-size:calc( 32px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
-  .intro-text {font-weight:300;font-size:calc( 24px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+  .intro-text {color:#FEBEBA;font-weight:700;font-size:calc( 10px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
 
   .network .circle {
     display: inline-block;
@@ -177,7 +177,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
     padding-right: 0;
     display: flex;
   }
-  .title {letter-spacing: -.2rem;}
+  .title, .subtitle {letter-spacing: -.17rem;}
 .is-pink .title {color: #7957D5;}
   .network.offline .circle {
     background: red;
