@@ -8,12 +8,6 @@ module.exports = {
   },
   render: {
   },
-  routeParams: {
-    '/:id': function () {
-      const ids = this.$store.state.regimen.step.id
-      return ids.id
-    }
-  },
   /*
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset
@@ -22,12 +16,12 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#ffd9dc' },
   /*
   ** Customize app manifest
   */
   manifest: {
-    theme_color: '#3B8070'
+    theme_color: '#ffd9dc'
   },
   plugins: [
   ],
