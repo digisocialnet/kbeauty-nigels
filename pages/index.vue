@@ -1,6 +1,6 @@
 <template>
 <div>
-<section class="hero is-pink is-bold">
+<section class="hero is-pink is-medium is-bold">
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
@@ -29,19 +29,29 @@
   <div class="steps container is-fluid">
 
   <div class="columns is-multiline is-variable is-5">
-<div v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column">
+<div v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column is-6-desktop">
+        <article>
+        <div class="notification intro is-light is-bold">
+          <figure class="image">
+ <img :src="steps.intro.image" class="img-fluid">
+     </figure>
+        </div>
+       </article>
+      </div>
+      <div v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column is-6-desktop">
         <article>
         <div class="notification intro is-light is-bold">
         <h4 class="title is-primary intro-text">
         {{steps.intro.heading}}
       </h4>
-        <h5>
-         {{steps.intro.text}}. Call <a href="tel:4242592206">424-259-2206</a> for more information or to make a viewing appointment.
+        <h5 v-html="steps.intro.full">
+       
       </h5>
+      <strong>Call <a href="tel:4242592206">424-259-2206</a> for more information or to make a viewing appointment.</strong>
         </div>
        </article>
       </div>
-      <div v-for="(stp, index) in steps.regimen" v-bind:data-clicked="stp.clicked | booleanfilt" v-bind:data-size="stp.size | booleanfilt" :index="index" v-bind:key="stp.id" class="column is-12 step">
+      <div v-for="(stp, index) in steps.regimen" v-bind:class="{ 'is-12-tablet': size, 'is-6-tablet': !size }" v-bind:data-clicked="stp.clicked | booleanfilt" v-bind:data-size="stp.size | booleanfilt" :index="index" v-bind:key="stp.id" class="column step">
         <article>
         <div class="notification step is-pink-outline is-bold">
           <figure v-if="stp.image" class="image">
@@ -144,7 +154,7 @@ return Boolean(value)
 	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 .notification.intro {background-color:#fff;margin: 18px;}
-.notification {padding: 36px; color:#B19998;flex: 1 0 auto;margin-bottom:24px;}
+.notification {padding: 36px; color:#B19998;flex: 1 0 auto;margin-bottom:12px;margin-left:6px;margin-right:6px;}
 a.button span {color:#7a707a;font-weight: 700;}
 .is-pink {background: #FEEAE9;}
 .step .title {font-size:calc( 20px + 1.7vw)}
@@ -155,14 +165,13 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
 .is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #fff;transition: .6s background-color ease-in, 1s border-color ease-in-out, .4s transform ease;}
 .is-pink-outline:hover {background: #FEF3F2;border:2px solid #FFCDCA;transition: 1.3s background-color ease-out, .3s border-color ease-in-out, .2s transform cubic-bezier(0, 1, 0.5, 1); transform: scale(1.03);z-index:100}
 .logo {height:24px;width:auto;fill:#7a707a;}
-.hero.is-pink .title {color:#1D3C65;font-weight: 500;font-size:calc( 84px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+.hero.is-pink .title {color:#1D3C65;font-weight: 800;font-size:calc( 84px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
   .network {
     font-weight: 400;
     font-size: 1rem;
   }
   .hero.is-pink .subtitle {color:#a89aa8;font-weight: 400;font-size:calc( 32px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
-  .intro-text {color:#FEBEBA;font-weight:700;font-size:calc( 18px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
-
+.hero {background-image: url(~/assets/header.jpg);background-size:cover;}
   .network .circle {
     display: inline-block;
     width: 1rem;
@@ -177,7 +186,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
     padding-right: 0;
     display: flex;
   }
-  .title, .subtitle {letter-spacing: -.17rem;}
+  .title, .subtitle {letter-spacing: -.13rem;}
 .is-pink .title {color: #7957D5;}
   .network.offline .circle {
     background: red;
@@ -202,6 +211,8 @@ color: #ff3860;
 .description {padding-bottom:16px;}
 .packery-item[data-clicked="true"] .description {  overflow-y: scroll;}
 .packery-item[data-clicked="true"] .notification:hover {transform:scale(.99);background: #F5F5F5; transition: .3s all;border-width:6px;border-color: #e3e3e3;}
+  .intro-text {letter-spacing: -.08rem;color:#FEBEBA;font-weight:500;}
 
- 
+ .column[data-size="true"] {width: 100%;}
+  .column[data-size="false"] {width: 50%;}
 </style>
