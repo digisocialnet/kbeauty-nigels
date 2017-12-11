@@ -1,11 +1,16 @@
+
 module.exports = {
   /*
   ** Build configuration
   */
   build: {
-    vendor: [
+    plugins: [
+     
+    ],
+    postcss: [
+
     ]
-  },
+},
   render: {
   },
   /*
