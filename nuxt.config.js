@@ -4,7 +4,6 @@ module.exports = {
   */
   build: {
     vendor: [
-      '~/plugins/vuepackeryplugin'
     ]
   },
   render: {
@@ -31,7 +30,6 @@ module.exports = {
     theme_color: '#3B8070'
   },
   plugins: [
-    {src: '~/plugins/vuepackeryplugin', ssr: false}
   ],
   /*
   ** Modules

@@ -4,26 +4,8 @@
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-          <img src="../assets/nigel.svg" class="logo" alt="Logo">
-          </a>
 
-          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroB" class="navbar-menu">
-          <div class="navbar-end">
-            <span class="navbar-item">
-              <a href="https://www.nigelbeauty.com/c-700-new-k-beauty.aspx" class="button is-info is-inverted">
-                <span>Shop K-Beauty</span>
-              </a>
-            </span>
-          </div>
-        </div>
+
       </div>
     </nav>
   </div>
@@ -31,9 +13,9 @@
   <div class="hero-body">
     <div class="container has-text-center">
       <span class="title has-text-center">
-        K-Beauty <span class="subtitle">
-        The&nbsp;LA&nbsp;Way 💁🏻‍🇰🇷
+        For Rent:
       </span>
+      <span class="subtitle">532 N. Mariposa Ave., Los Angeles, CA 90004</span>
       </span>
 
     </div>
@@ -46,55 +28,36 @@
       </div>
   </div>
 </section>
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container is-text-center">
-      <h4>
-       Coming soon
-      </h4>
-    </div>
-  </div>
-</section>
 <section>
   <div class="steps container is-fluid">
 
-  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 40}">
-<div v-packery-item v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column packery-item">
+  <div class="columns is-multiline is-variable is-5">
+<div v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column">
         <article>
-        <div class="notification step is-light is-bold">
-        <h4 class="title">
+        <div class="notification intro is-light is-bold">
+        <h4 class="title is-primary">
         {{steps.intro.heading}}
       </h4>
-        <h5>
-         {{steps.intro.text}}
+        <h5 class="intro-text">
+         {{steps.intro.text}}. Call <a href="tel:4242592206">424-259-2206</a> for more information or to make a viewing appointment.
       </h5>
-       <p>
-         {{steps.intro.fulltext}}
-       </p>
-
-    <a class="button is-danger is-outlined">Learn More</a>
-
         </div>
        </article>
       </div>
-      <div v-packery-item v-for="(stp, index) in steps.regimen" v-bind:data-size="stp.size | booleanfilt" :index="index" v-bind:key="stp.id" @click="stp.clicked = !stp.clicked, stp.size = !stp.size" class="column packery-item">
+      <div v-for="(stp, index) in steps.regimen" v-bind:data-clicked="stp.clicked | booleanfilt" v-bind:data-size="stp.size | booleanfilt" :index="index" v-bind:key="stp.id" class="column is-12 step">
         <article>
         <div class="notification step is-pink-outline is-bold">
-          <figure v-if="stp.image" class="image is-1by1">
+          <figure v-if="stp.image" class="image">
           <img :src="stp.image">
           </figure>
         <h4 class="title">
-        {{stp.heading}}
+          {{stp.heading}}
       </h4>
-        <h5>
-         {{stp.text}}
-      </h5>
-      <transition name="fade">
-       <p v-if="stp.clicked">
+      <transition name="slide">
+       <p class="description" v-if="stp.clicked">
          {{stp.fulltext}}
        </p>
 </transition>
-    <a class="button is-danger is-outlined">Learn More</a>
 
         </div>
        </article>
@@ -153,17 +116,14 @@ return Boolean(value)
         this.online = type === 'online'
       },
 
-    },
-    destroyed () {
-      // window.removeEventListener('offline', this._toggleNetworkStatus)
-      // window.removeEventListener('online', this._toggleNetworkStatus)
     }
   }
 </script>
 
 <style scoped>
+.step-number {top:20px;right:20px;margin-right: 12px;position:absolute;font-size: 1.5rem;background: #1D3C65;padding:6px 18px;border-radius:50%;display: inline-block;color:#fff;font-weight:900;display: flex;align-items: center;justify-content: center;}
 .steps {margin-top: 48px; padding: calc(24px + 2vw);font-weight: 200;}
-.fade-enter-active, .fade-leave-active {
+.slide-enter-active, .slide-leave-active {
   overflow-y: hidden;
 	max-height: 800px;
   	transition-property: all;
@@ -171,17 +131,18 @@ return Boolean(value)
   transition-delay: .2s;
 	transition-timing-function: ease-out;
 }
-.fade-enter, .fade-leave-to {
+.slide-enter, .slide-leave-to {
   max-height: 0;
   	transition-property: all;
 	transition-duration: .5s;
   transition-delay: .25s;
 	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
-.notification {padding: 36px; color:#B19998;flex: 1 0 auto;}
+.notification.intro {background-color:#fff;margin: 18px;}
+.notification {padding: 36px; color:#B19998;flex: 1 0 auto;margin-bottom:24px;}
 a.button span {color:#7a707a;font-weight: 700;}
 .is-pink {background: #FEEAE9;}
-.step .title {font-size:calc( 24px + 2vw)}
+.step .title {font-size:calc( 20px + 1.7vw)}
 .grid-sizer {height: 200px;}
 figure {margin-bottom:16px;}
 figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #FEEAE9;pointer-events:none;}
@@ -195,6 +156,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
     font-size: 1rem;
   }
   .hero.is-pink .subtitle {color:#a89aa8;font-weight: 100;font-size:calc( 64px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+  .intro-text {font-size:calc( 42px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
 
   .network .circle {
     display: inline-block;
@@ -215,56 +177,24 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
   .network.offline .circle {
     background: red;
   }
-  .packery-item {display: flex;
-   flex-direction: column;}
+  
 .packery-item article {padding-right: 4px; padding-left: 4px; padding-top: 4px; padding-bottom: 4px}
+.packery-item[data-clicked="true"] .notification {
+  border:6px solid #FFCDCA;z-index:101;transition: .3s all;
+}
 
+.packery-item[data-clicked="true"] .title {
+color: #ff3860;
+}
 
-  @media (min-width: 280px) {
-.packery-item, .packery-item[data-size="false"] {
-  width: 100%;
+.packery-item[data-clicked="true"] .notification {
+  box-shadow: 7px 9px 105px 0px rgba(0,0,0,0.3);
+  max-height:90vh;
+  overflow-y: hidden;
 }
-.packery-item[data-size="true"] {
-  width: 100%;
-}
-   }
-  @media (min-width: 800px) {
-.packery-item, .packery-item[data-size="false"] {
-  width: 50%;
-}
-.packery-item[data-size="true"],.active.packery-item[data-size="true"] {
-  width: 100%;
-}
-   }
-  @media (min-width: 1080px) {
-.packery-item, .packery-item[data-size="false"] {
-  width: 33%;
-}
-.packery-item, .packery-item[data-size="true"],.active.packery-item[data-size="true"] {
-  width: 66%;
-}
-   }
-  @media (min-width: 1200px) {
-.packery-item, .packery-item[data-size="false"] {
-  width: 25%;
-}
-.packery-item[data-size="true"],.active.packery-item[data-size="false"] {
-  width: 50%;
-}
-.packery-item[data-size="2"] {
-  width: 75%;
-}
-   }
-     @media (min-width: 1601px) {
-.packery-item, .packery-item[data-size="false"] {
-  width: 20%;
-}
-.packery-item[data-size="true"],.active.packery-item[data-size="false"] {
-  width: 40%;
-}
-.packery-item[data-size="2"]{
-  width: 60%;
-}
-   }
-   .step-intro .notification {border-color:#fff !important;background-color:#fff !important;}
+.description {padding-bottom:16px;}
+.packery-item[data-clicked="true"] .description {  overflow-y: scroll;}
+.packery-item[data-clicked="true"] .notification:hover {transform:scale(.99);background: #F5F5F5; transition: .3s all;border-width:6px;border-color: #e3e3e3;}
+
+ 
 </style>
