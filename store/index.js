@@ -10,7 +10,7 @@ const createStore = () =>
       intro: {
         heading: 'A spacious and modern two-story condominium / townhome for rent in East Hollywood / Koreatown, central to schools, downtown, and everything, adjacent to Downtown Los Angeles, USC, Silverlake, Los Feliz, Echo Park, Hollywood, etc.',
         clicked: false,
-        image: '~assets/la.jpg',
+        image: '/pics/la.jpg',
          text: "Available in January",
          fulltext: "Your opportunity to rent a townhouse style condo off of world-renowned Melrose Avenue! This home sits on a hill top giving you a panoramic view of Los Angeles including Downtown and the Griffith park mountains. This one of a kind town home is centrally located close to shopping, markets, schools, and trendy restaurants in LA's most vibrant neighborhood. It comes stacked with 2 bed + 2.5 bath at 1200 sq ft including 2 stories of living space. Kitchen, dining room, living room and powder room are downstairs and 2 master suite bedroom with its own full bathrooms are upstairs. Enclosed private patio for b-b-q. Dishwasher, microwave and gas range, refrigerator, washer and dryer, are all included. You will be pleasantly surprised how nice this street is. Parking is secure and controlled in a gated subterranean garage. The unit will come with 2 Car Parking (not tandem) with guest parking available for each unit. Air conditioning and heater throughout the entire unit.<br/><br/>Close to the 101 freeway, and close to the metro and public transportation. Quiet, perfect for a family, young professionals, students - the location is great, the condo has everything you need. No hassle, and easy-going landlord. Available for rent starting NOW, flexible on the start date.",
          size: false},

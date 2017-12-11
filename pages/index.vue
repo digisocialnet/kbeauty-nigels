@@ -33,7 +33,7 @@
         <article>
         <div class="notification intro is-light is-bold">
           <figure class="image">
- <img :src="steps.intro.image" class="img-fluid">
+ <img v-bind:src="steps.intro.image" class="img-fluid">
      </figure>
         </div>
        </article>
@@ -75,10 +75,18 @@
 </section>
 <section>
   <div class="container">
-  <div :class="['network',online ? 'online' : 'offline']">
-        <div class="circle"></div>
-        {{ online ? 'online' : 'offline' }}
-      </div><BR/><BR/>
+    <div class="columnns">
+    <div class="column">
+       <h5 class="is-bold">Also Listed On: </h5>
+    <div class="buttons">
+   
+  <a class="button" href="https://www.zillow.com/homedetails/532-N-Mariposa-Ave-APT-105-Los-Angeles-CA-90004/82873208_zpid/">Zillow</a>
+  <a class="button" href="https://hotpads.com/532-n-mariposa-ave-los-angeles-ca-90004-svx01d/105/pad?">Hotpads</a>
+  <a class="button" href="https://www.trulia.com/rental/4039811643-532-N-Mariposa-Ave-105-Los-Angeles-CA-90004?">Trulia</a>
+</div>
+</div>
+</div>
+ <BR/><BR/>
       </div>
   </section>
 </div>
@@ -106,13 +114,6 @@ return Boolean(value)
     mounted () {
 
 
-      if (!window.navigator) {
-        this.online = false
-        return
-      }
-      this.online = Boolean(window.navigator.onLine)
-      window.addEventListener('offline', this._toggleNetworkStatus)
-      window.addEventListener('online', this._toggleNetworkStatus)
     },
     methods: {
       expand ($event) {
@@ -127,9 +128,7 @@ return Boolean(value)
      event.currentTarget.classList.toggle('active')
      this.$store.commit('SET_REGIMEN', value)
     },
-      _toggleNetworkStatus ({ type }) {
-        this.online = type === 'online'
-      },
+     
 
     }
   }
