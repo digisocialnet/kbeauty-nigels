@@ -22,10 +22,7 @@
   </div>
 
   <div class="hero-foot">
-     <div :class="['network',online ? 'online' : 'offline']">
-        <div class="circle"></div>
-        {{ online ? 'online' : 'offline' }}
-      </div>
+     
   </div>
 </section>
 <section>
@@ -35,10 +32,10 @@
 <div v-bind:data-size="steps.intro.size | booleanfilt" v-bind:key="steps.intro.id" class="column">
         <article>
         <div class="notification intro is-light is-bold">
-        <h4 class="title is-primary">
+        <h4 class="title is-primary intro-text">
         {{steps.intro.heading}}
       </h4>
-        <h5 class="intro-text">
+        <h5>
          {{steps.intro.text}}. Call <a href="tel:4242592206">424-259-2206</a> for more information or to make a viewing appointment.
       </h5>
         </div>
@@ -66,6 +63,14 @@
    </div>
 </div>
 </section>
+<section>
+  <div class="container">
+  <div :class="['network',online ? 'online' : 'offline']">
+        <div class="circle"></div>
+        {{ online ? 'online' : 'offline' }}
+      </div><BR/><BR/>
+      </div>
+  </section>
 </div>
 </template>
 
@@ -122,7 +127,7 @@ return Boolean(value)
 
 <style scoped>
 .step-number {top:20px;right:20px;margin-right: 12px;position:absolute;font-size: 1.5rem;background: #1D3C65;padding:6px 18px;border-radius:50%;display: inline-block;color:#fff;font-weight:900;display: flex;align-items: center;justify-content: center;}
-.steps {margin-top: 48px; padding: calc(24px + 2vw);font-weight: 200;}
+.steps {margin-top: 14px; padding: calc(24px + 2vw);font-weight: 200;}
 .slide-enter-active, .slide-leave-active {
   overflow-y: hidden;
 	max-height: 800px;
@@ -150,13 +155,13 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
 .is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #fff;transition: .6s background-color ease-in, 1s border-color ease-in-out, .4s transform ease;}
 .is-pink-outline:hover {background: #FEF3F2;border:2px solid #FFCDCA;transition: 1.3s background-color ease-out, .3s border-color ease-in-out, .2s transform cubic-bezier(0, 1, 0.5, 1); transform: scale(1.03);z-index:100}
 .logo {height:24px;width:auto;fill:#7a707a;}
-.hero.is-pink .title {color:#1D3C65;font-weight: 100;font-size:calc( 84px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+.hero.is-pink .title {color:#1D3C65;font-weight: 500;font-size:calc( 84px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
   .network {
     font-weight: 400;
     font-size: 1rem;
   }
-  .hero.is-pink .subtitle {color:#a89aa8;font-weight: 100;font-size:calc( 64px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
-  .intro-text {font-size:calc( 42px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+  .hero.is-pink .subtitle {color:#a89aa8;font-weight: 400;font-size:calc( 32px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+  .intro-text {font-weight:300;font-size:calc( 24px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
 
   .network .circle {
     display: inline-block;
@@ -186,6 +191,8 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
 .packery-item[data-clicked="true"] .title {
 color: #ff3860;
 }
+
+.notification * {pointer-events:none;}
 
 .packery-item[data-clicked="true"] .notification {
   box-shadow: 7px 9px 105px 0px rgba(0,0,0,0.3);
