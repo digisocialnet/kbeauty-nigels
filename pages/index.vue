@@ -161,7 +161,7 @@ figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #
     font-size: 1rem;
   }
   .hero.is-pink .subtitle {color:#a89aa8;font-weight: 400;font-size:calc( 32px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
-  .intro-text {color:#FEBEBA;font-weight:700;font-size:calc( 10px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+  .intro-text {color:#FEBEBA;font-weight:700;font-size:calc( 18px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
 
   .network .circle {
     display: inline-block;
