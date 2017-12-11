@@ -73,22 +73,20 @@
    </div>
 </div>
 </section>
-<section>
-  <div class="container">
-    <div class="columnns">
-    <div class="column">
-       <h5 class="is-bold">Also Listed On: </h5>
-    <div class="buttons">
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="content has-text-centered">
+       <h3 class="is-bold">Also Listed On: </h3>
+    <div class="is-grouped has-text-centered">
    
-  <a class="button" href="https://www.zillow.com/homedetails/532-N-Mariposa-Ave-APT-105-Los-Angeles-CA-90004/82873208_zpid/">Zillow</a>
-  <a class="button" href="https://hotpads.com/532-n-mariposa-ave-los-angeles-ca-90004-svx01d/105/pad?">Hotpads</a>
-  <a class="button" href="https://www.trulia.com/rental/4039811643-532-N-Mariposa-Ave-105-Los-Angeles-CA-90004?">Trulia</a>
-</div>
+  <a class="button is-danger is-inverted" href="https://www.zillow.com/homedetails/532-N-Mariposa-Ave-APT-105-Los-Angeles-CA-90004/82873208_zpid/">Zillow</a>
+  <a class="button is-danger is-inverted" href="https://hotpads.com/532-n-mariposa-ave-los-angeles-ca-90004-svx01d/105/pad?">Hotpads</a>
+  <a class="button is-danger is-inverted" href="https://www.trulia.com/rental/4039811643-532-N-Mariposa-Ave-105-Los-Angeles-CA-90004?">Trulia</a>
 </div>
 </div>
  <BR/><BR/>
       </div>
-  </section>
+  </footer>
 </div>
 </template>
 
@@ -152,6 +150,8 @@ return Boolean(value)
   transition-delay: .25s;
 	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
+footer .button {margin: 6px 3px;}
+footer {background: #FEEAE9;}
 .notification.intro {background-color:#fff;margin: 18px;}
 .notification {padding: 36px; color:#B19998;flex: 1 0 auto;margin-bottom:12px;margin-left:6px;margin-right:6px;}
 a.button span {color:#7a707a;font-weight: 700;}
