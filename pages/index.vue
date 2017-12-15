@@ -78,26 +78,21 @@
    </div>
 </div>
 </section>
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>10 Step K-Beauty Regimen</strong> by <a href="https://www.nigelbeauty.com">Nigel Beauty</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-    </div>
-  </div>
-</footer>
+<k-footer/>
   </div>
 </template>
 
 <script>
+import kFooter from '~/components/k-footer'
 export default {
   data() {
     return {
       online: true
     };
+  },
+  transition: 'page',
+  components: {
+kFooter
   },
   filters: {
     booleanfilt(value) {
@@ -110,39 +105,16 @@ export default {
     }
   },
   mounted() {
-popMove()
-    
-  },
-  methods: {
-    expand($event) {
-      this.$store.commit("SET_REGIMEN", value);
-    },
-    popMove() {
-const photos = document.querySelectorAll('figure img')
 
 
-tween({
-  from: 0,
-  to: { x: 300, rotate: 180 },
-  duration: 1000,
-  ease: easing.backOut,
-  flip: Infinity,
-  // elapsed: 500,
-  // loop: 5,
-  // yoyo: 5
-}).start(photos.set);
+  }}
 
-},
-    toggle(clicked, $event) {
-      event.currentTarget.classList.toggle("expand");
-      event.currentTarget.classList.toggle("active");
-      this.$store.commit("SET_REGIMEN", value);
-    }
-  }
-};
 </script>
 
 <style scoped>
+body {font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+.title, .subtitle {font-family:orpheuspro,Cambria, Cochin, Georgia, Times, Times New Roman, serif}
+
 .notification {
   transition: width 0.4s, height 0.4s;
 }
@@ -225,7 +197,7 @@ figure img {
   border: 2px solid #ffcdca;
   transition: 1.3s background-color ease-out, 0.3s border-color ease-in-out,
     0.2s transform cubic-bezier(0, 1, 0.5, 1);
-  transform: scale(1.03);
+transform: scale(1.03) perspective(2000px) rotateY(8deg) translate3d(8px,0,0);transition: .3s transform;
   z-index: 100;
 }
 
