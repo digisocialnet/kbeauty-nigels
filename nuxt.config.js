@@ -5,11 +5,18 @@ module.exports = {
   */
   build: {
     plugins: [
-     
+
     ],
     postcss: [
 
     ]
+},
+css: [
+  '@/assets/main.css'
+],
+workbox: {
+
+  handleFetch: true
 },
   render: {
   },
@@ -17,7 +24,10 @@ module.exports = {
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset
   */
-  head: {},
+  head: {
+
+
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -28,12 +38,12 @@ module.exports = {
   manifest: {
     theme_color: '#ffd9dc'
   },
-  plugins: [
+  plugins: ['~/plugins/vue-form-generator', '~/plugins/vue-form-wizard'
   ],
   /*
   ** Modules
   */
   modules: [
-    '@nuxtjs/pwa', '@nuxtjs/bulma'
+    '@nuxtjs/pwa', '@nuxtjs/bulma', '@nuxtjs/axios'
   ]
 }
