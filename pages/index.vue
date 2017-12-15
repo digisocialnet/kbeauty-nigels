@@ -117,7 +117,7 @@
 <section>
   <div class="steps container is-fluid">
 
-  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 40}">
+  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true,isInstant:true}">
 
       <div v-packery-item v-if="stp.id != 0" v-for="(stp, index) in steps.regimen" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="stp.id" class="column packery-item step">
         <article><nuxt-link :to="`/step/${stp.id}`">
@@ -202,23 +202,23 @@ export default {
 
       for (var i = 0; i < Length; i++) {
 tl.fromTo(`section.panel-${i}`, 1.5, {
-          opacity: "100%",
+          autoAlpha: 1,
           y: "0",
           ease: this.$gsap.Linear.easeNone
         }, {
-          opacity: "0%",
-          y: "0",
+          autoAlpha: 0,
+          y: 0,
           ease: this.$gsap.Linear.easeNone
         })
 
       if (i !== 0) {
         // For each panel except the one whom index is 0, create the tween and add it to the tl timeline
-        tl.fromTo(`section.panel-${i}`, 1.5, {opacity: "0%",
+        tl.fromTo(`section.panel-${i}`, 1.5, {autoAlpha: 1,
           y: "0",
           ease: this.$gsap.Linear.easeNone
         }, {
-          opacity: "100%",
-          y: "0",
+          autoAlpha: 0,
+          y: 0,
           ease: this.$gsap.Linear.easeNone
         })
       console.log('loading...')
@@ -228,11 +228,11 @@ tl.fromTo(`section.panel-${i}`, 1.5, {
 
 
       const scene = new this.$scrollmagic.Scene({
-        triggerElement: `section.panel-${i}`,
+        triggerElement: '.pinContainer',
         triggerHook: "onEnter",
         duration: '300%'
       })
-        .setPin('.hero-body')
+        .setPin(`section.panel-${i}`)
         .setTween(tl)
 
 

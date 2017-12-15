@@ -26,7 +26,7 @@
   <div class="steps container is-fluid">
 
   <div class="columns is-multiline is-variable is-5"
-  v-packery="{itemSelector: '.packery-item', percentPosition: true, isInstant:true}"
+  v-packery="{itemSelector: '.packery-item', percentPosition: true, isInstant: true}"
   >
           <div v-packery-item
           :data-size="true"
