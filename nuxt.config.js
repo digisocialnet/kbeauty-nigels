@@ -10,6 +10,7 @@ module.exports = {
   },
   generate: {
     routes: [
+      '/',
       '/step/1',
       '/step/2',
       '/step/3',
@@ -52,6 +53,8 @@ module.exports = {
     maxAssetSize: 200,
     maxInitialChunkSize: 200
   },
+  css: ['bulma/css/bulma.css','~/assets/main.css'],
+
   transition: {
     name: 'page',
     mode: 'out-in',
@@ -59,40 +62,44 @@ module.exports = {
 
     enter: function (el, done) {
       if (process.browser) {
-        if (this.$store.state.menuIsActive === false) {
           console.log('initmenu')
           console.log('animenter nuxtconfig')
           var tl = new this.$gsap.TimelineMax()
           var tg = document.querySelectorAll('.el')
-          var st = document.querySelector('img')
-          var box = document.querySelectorAll('.box')
+          var st = document.querySelectorAll('img')
+          var not = document.querySelectorAll('.notification')
+          var hero = document.querySelectorAll('.hero')
+
+          const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
             const bounce = this.$gsap.Bounce.easeInOut
-             tl.fromTo(st, 0.3, { y: -100, autoAlpha: 1 }, { y: 0, autoAlpha: 1 })
+             tl.staggerTo(hero, 0.3, { autoAlpha: 1, ease: elastic }, 0.1)
+             .staggerFromTo(st, 0.3, { y: 10, autoAlpha: 0 }, { autoAlpha: 1 })
            .staggerTo(tg, 0.3, { autoAlpha: 1, ease: bounce }, 0.1)
-            .staggerTo(box, 0.3, { autoAlpha: 1}, 0.1)
-                      .staggerTo(el, 0.3, { autoAlpha: 1, onComplete: done }, 0.1)
+           .staggerTo(not, 0.3, { autoAlpha: 1, ease: elastic }, 0.1)
+            .staggerTo(el, 0.3, { autoAlpha: 1, onComplete: done }, 0.1);
         }
 
 
            }
-        }
+
 
   },
   leave: function (el, done) {
     if (process.browser) {
       console.log('leaving nuxtconfig...')
       var tl = new this.$gsap.TimelineMax()
+      var st = document.querySelectorAll('img')
       var tg = document.querySelectorAll('.el')
-      var st = document.querySelector('img')
+      var not = document.querySelectorAll('.notification')
+      var hero = document.querySelectorAll('.hero')
       const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
 
-      var box = document.querySelectorAll('.box')
-      tl.fromTo(st, 0.3, { y: 0, autoAlpha: 1, ease: elastic }, { y: -100, autoAlpha: 1, ease: elastic })
 
-      .staggerTo(tg, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
-
-      .staggerTo(box, 0.2, { autoAlpha: 0, ease: elastic }, 0.1)
-       .staggerTo(el, 0.3, { autoAlpha: 0, onComplete: done }, 0.1)
+      tl.staggerFromTo(tg, 0.3, { autoAlpha: 1, ease: elastic }, { autoAlpha: 0, ease: elastic }, 0.1)
+      .staggerFromTo(st, 0.3, { autoAlpha: 1, ease: elastic }, { autoAlpha: 0, ease: elastic }, 0.1)
+      .staggerTo(not, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
+      .staggerTo(hero, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
+       .staggerTo(el, 0.3, { autoAlpha: 0, onComplete: done }, 0.1);
     }
   },
   /*
@@ -121,6 +128,6 @@ module.exports = {
   ** Modules
   */
   modules: [
-    '@nuxtjs/pwa', '@nuxtjs/bulma'
+    '@nuxtjs/pwa'
   ]
 }

@@ -1,6 +1,39 @@
 <template>
 <div>
-<section class="hero is-pink is-bold">
+  <div class="pinContainer" ref="pin">
+<section class="hero is-pink is-fullheight is-bold panel-0">
+  <div class="hero-head">
+
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-center">
+         <div class='animatedimage'>
+    <img src='~/assets/icons/1.svg' width='128' height='128' />
+    <img src='~/assets/icons/2.svg' width='128' height='128' />
+    <img src='~/assets/icons/3.svg' width='128' height='128' />
+    <img src='~/assets/icons/4.svg' width='128' height='128' />
+    <img src='~/assets/icons/5.svg' width='128' height='128' />
+    <img src='~/assets/icons/6.svg' width='128' height='128' />
+    <img src='~/assets/icons/7.svg' width='128' height='128' />
+    <img src='~/assets/icons/8.svg' width='128' height='128' />
+    <img src='~/assets/icons/9.svg' width='128' height='128' />
+    <img src='~/assets/icons/10.svg' width='128' height='128' />
+    <img src='~/assets/icons/11.svg' width='128' height='128' />
+    <img src='~/assets/icons/12.svg' width='128' height='128' />
+    <img src='~/assets/icons/13.svg' width='128' height='128' />
+
+    <!-- With this preloader, the 'empty' frame is the last frame, so we set image 16 to be the poster. animation will always start from the first image, which works well in this case -->
+  </div>
+
+    </div>
+  </div>
+
+  <div class="hero-foot">
+
+  </div>
+</section>
+<section class="hero is-pink is-fullheight is-bold panel-1">
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
@@ -39,23 +72,53 @@
 
   </div>
 </section>
-<section>
-  <div class="steps container is-fluid">
+<section class="hero is-pink is-fullheight is-bold panel-2">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+          <img src="../assets/nigel.svg" class="logo" alt="Logo">
+          </a>
 
-  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 40}">
-<div v-packery-item :data-size="steps.intro.size | booleanfilt" :key="steps.intro.heading" class="column packery-item">
+
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
+            <span class="navbar-item">
+              <a href="https://www.nigelbeauty.com/c-700-new-k-beauty.aspx" class="button is-info is-inverted">
+                <span>Shop K-Beauty</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-center">
         <article>
-        <div class="notification intro is-light is-bold">
         <h4 class="title is-primary">
         {{steps.intro.heading}}
       </h4>
         <h5>
          {{steps.intro.text}}
       </h5>
-        </div>
 
        </article>
+
+    </div>
+  </div>
+
+
+</section>
 </div>
+<section>
+  <div class="steps container is-fluid">
+
+  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 40}">
+
       <div v-packery-item v-if="stp.id != 0" v-for="(stp, index) in steps.regimen" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="stp.id" class="column packery-item step">
         <article><nuxt-link :to="`/step/${stp.id}`">
         <div class="notification step is-pink-outline is-bold">
@@ -65,11 +128,11 @@
 
                 <div class="step-number">
          STEP {{stp.text}}
-      </div> <h4 class="title">{{ stp.heading }} <transition name="slide">
-       <span class="productname" v-if="stp.clicked">
+      </div> <h4 class="title">{{ stp.heading }}
+       <span class="productname">
          {{stp.productname}}
        </span>
-</transition></h4>
+</h4>
 
         </div></nuxt-link>
        </article>
@@ -83,16 +146,21 @@
 </template>
 
 <script>
-import kFooter from '~/components/k-footer'
+import kFooter from "~/components/k-footer";
+
 export default {
   data() {
     return {
-      online: true
     };
   },
   transition: 'page',
   components: {
-kFooter
+    kFooter
+  },
+  mounted() {
+     if (process.browser) {
+    this.$nextTick(this.pinContainerScene);
+     }
   },
   filters: {
     booleanfilt(value) {
@@ -104,16 +172,111 @@ kFooter
       return this.$store.state;
     }
   },
-  mounted() {
+  destroyed() {
+
+    this.$ksvuescr.$emit("destroy");
+
+  },
+  methods: {
+ animate () {
+             if (process.browser) {
+      console.log('loading...')
+      var tl = new this.$gsap.TimelineMax()
+            var tl2=new this.$gsap.TimelineMax({repeat:-1,repeatDelay:1})
+
+      var tg = document.querySelectorAll('.el')
+       var img = document.querySelectorAll('.animatedimage img')
+      const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
 
 
-  }}
+      tl.staggerTo(tg, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
+       tl2.staggerTo(img,0,{opacity:0},0.08);
+         console.log('finished start')
+    }
+    },
+    pinContainerScene() {
+       if (process.browser) {
+      const Length = 3;
+      const tl = new this.$gsap.TimelineMax();
+        var img = document.querySelector('.hero-body')
 
+      for (var i = 0; i < Length; i++) {
+tl.fromTo(`section.panel-${i}`, 1.5, {
+          opacity: "100%",
+          y: "0",
+          ease: this.$gsap.Linear.easeNone
+        }, {
+          opacity: "0%",
+          y: "0",
+          ease: this.$gsap.Linear.easeNone
+        })
+
+      if (i !== 0) {
+        // For each panel except the one whom index is 0, create the tween and add it to the tl timeline
+        tl.fromTo(`section.panel-${i}`, 1.5, {opacity: "0%",
+          y: "0",
+          ease: this.$gsap.Linear.easeNone
+        }, {
+          opacity: "100%",
+          y: "0",
+          ease: this.$gsap.Linear.easeNone
+        })
+      console.log('loading...')
+
+
+
+
+
+      const scene = new this.$scrollmagic.Scene({
+        triggerElement: `section.panel-${i}`,
+        triggerHook: "onEnter",
+        duration: '300%'
+      })
+        .setPin('.hero-body')
+        .setTween(tl)
+
+
+         console.log('finished start')
+    };
+
+}
+
+      // Add scene to ScrollMagic controller by emiting an 'addScene' event on vm.$ksvuescr (which is our global event bus)
+      this.$ksvuescr.$emit("addScene", "pinContainerScene", scene);
+
+      // TAAAAAAADAAAAAAAAAAAA
+    }
+    }
+  }
+};
 </script>
 
 <style scoped>
-body {font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
-.title, .subtitle {font-family:orpheuspro,Cambria, Cochin, Georgia, Times, Times New Roman, serif}
+.pinContainer {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.pinContainer section {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  font-family: "futura-pt", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.title,
+.subtitle {
+  font-family: orpheuspro, Cambria, Cochin, Georgia, Times, Times New Roman,
+    serif;
+}
 
 .notification {
   transition: width 0.4s, height 0.4s;
@@ -197,7 +360,9 @@ figure img {
   border: 2px solid #ffcdca;
   transition: 1.3s background-color ease-out, 0.3s border-color ease-in-out,
     0.2s transform cubic-bezier(0, 1, 0.5, 1);
-transform: scale(1.03) perspective(2000px) rotateY(8deg) translate3d(8px,0,0);transition: .3s transform;
+  transform: scale(1.03) perspective(2000px) rotateY(8deg)
+    translate3d(8px, 0, 0);
+  transition: 0.3s transform;
   z-index: 100;
 }
 
@@ -209,7 +374,7 @@ transform: scale(1.03) perspective(2000px) rotateY(8deg) translate3d(8px,0,0);tr
 .hero.is-pink .title {
   color: #1d3c65;
   font-weight: 100;
-  font-size: calc(84px + (160 - 100) * (100vw - 300px) / (1920 - 300));
+  font-size: calc(44px + (160 - 100) * (100vw - 300px) / (1920 - 300));
 }
 .network {
   font-weight: 400;
@@ -218,7 +383,7 @@ transform: scale(1.03) perspective(2000px) rotateY(8deg) translate3d(8px,0,0);tr
 .hero.is-pink .subtitle {
   color: #a89aa8;
   font-weight: 100;
-  font-size: calc(64px + (160 - 100) * (100vw - 300px) / (1920 - 300));
+  font-size: calc(28px + (160 - 100) * (100vw - 300px) / (1920 - 300));
 }
 
 .network .circle {

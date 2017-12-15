@@ -9,10 +9,7 @@
     <div class="container has-text-center">
 
 
-        <nuxt-link to="/" exact><span class="title has-text-center el">K-Beauty </span></nuxt-link> <span class="el subtitle">
-        The&nbsp;LA&nbsp;Way 💁🏻‍🇰🇷
-
-      </span>     <a href="https://www.nigelbeauty.com/">
+        <nuxt-link to="/" exact><span class="title has-text-center el">K-Beauty: Perfect Skin in 10 Steps</span></nuxt-link>  <a href="https://www.nigelbeauty.com/">
           <img src="../../assets/nigel.svg" class="el logo" alt="Logo">
           </a>
       <a href="https://www.nigelbeauty.com/c-700-new-k-beauty.aspx" class="el button is-primary is-large is-inverted">
@@ -29,7 +26,7 @@
   <div class="steps container is-fluid">
 
   <div class="columns is-multiline is-variable is-5"
-  v-packery="{itemSelector: '.packery-item', percentPosition: true, stagger: 40}"
+  v-packery="{itemSelector: '.packery-item', percentPosition: true, isInstant:true}"
   >
           <div v-packery-item
           :data-size="true"
@@ -150,21 +147,12 @@ hideSteps() {
 
 
     },
+    destroyed() {
+this.Packery = null
+    },
     methods: {
 
-      filter (array, callback) {
 
-    var filtered_array = [];
-
-    array.forEach(function (element, index, array) {
-        if (callback(element, index, array)) {
-            filtered_array.push(element);
-        }
-    });
-
-    return filtered_array;
-
-},
 
 
                 toggle (clicked, $event) {
@@ -224,12 +212,12 @@ z-index:100}
 .notification .box:hover {transform: scale(1.003);transition: transform .3s ease-in;}
 .param-item .notification  {background:#F28292;border:2px solid #FEEAE9;border-radius: 18px;background: #fff;}
 .logo {height:24px;width:auto;fill:#7a707a;}
-.hero.is-pink .title {color:#1D3C65;font-weight: 100;font-size:calc( 84px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+.hero.is-pink .title {color:#1D3C65;font-weight: 100;font-size:calc( 44px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
   .network {
     font-weight: 400;
     font-size: 1rem;
   }
-  .hero.is-pink .subtitle {color:#a89aa8;font-weight: 100;font-size:calc( 64px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+  .hero.is-pink .subtitle {color:#a89aa8;font-weight: 100;font-size:calc( 28px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
 .packery-item[index="0"]  {visibility:hidden !important;display:none !important;}
 .currentParam {visibility:hidden !important;display:none !important;}
   .network .circle {
