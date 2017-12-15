@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import VuePackeryPlugin from '~/plugins/packery.js'
+import VuePackeryPlugin from 'vue-packery-plugin'
 
 Vue.use(VuePackeryPlugin)

@@ -89,7 +89,7 @@
     </div>
   </div>
 </footer>
-</div>
+  </div>
 </template>
 
 <script>
@@ -109,11 +109,30 @@ export default {
       return this.$store.state;
     }
   },
-  mounted() {},
+  mounted() {
+popMove()
+    
+  },
   methods: {
     expand($event) {
       this.$store.commit("SET_REGIMEN", value);
     },
+    popMove() {
+const photos = document.querySelectorAll('figure img')
+
+
+tween({
+  from: 0,
+  to: { x: 300, rotate: 180 },
+  duration: 1000,
+  ease: easing.backOut,
+  flip: Infinity,
+  // elapsed: 500,
+  // loop: 5,
+  // yoyo: 5
+}).start(photos.set);
+
+},
     toggle(clicked, $event) {
       event.currentTarget.classList.toggle("expand");
       event.currentTarget.classList.toggle("active");

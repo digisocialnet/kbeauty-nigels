@@ -138,26 +138,14 @@ return Boolean(value)
       return this.$store.state;
     },
 hideSteps() {
-//  var param = this.$route.params.id
-//  var steps = this.$store.state.regimen
-//  var count = this.$store.state.regimen.length
-//  steps.splice(param,1)
+
       return this.$store.state.regimen
 },
     paramStep() {
       var param = this.currentParam
       return this.$store.state.regimen[param]
 
-      },
-
-
-//   paramStep() {
-//     var steps = this.steps.regimen
-// steps.filter(function (step) {
-//     return step.slug = this.$route.params.id
-// });
-
-//   }
+      }
 
 
   },

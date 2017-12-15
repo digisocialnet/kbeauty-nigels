@@ -11,6 +11,7 @@
     "caniuse-lite": "1.0.30000780",
     "ks-vue-scrollmagic": "^1.0.2",
     "nuxt": "latest",
+    "popmotion": "^8.1.1",
     "vue-packery-plugin": "^1.0.4",
     "vue-server-renderer": "2.5.9",
     "vue-template-compiler": "2.5.9"
