@@ -72,11 +72,11 @@ module.exports = {
 
           const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
             const bounce = this.$gsap.Bounce.easeInOut
-             tl.staggerTo(hero, 0.3, { autoAlpha: 1, ease: elastic }, 0.1)
+             tl.staggerTo(hero, 0.3, { autoAlpha: 1, ease: elastic, onComplete: done }, 0.1)
              .staggerFromTo(st, 0.3, { y: 10, autoAlpha: 0 }, { autoAlpha: 1 })
            .staggerTo(tg, 0.3, { autoAlpha: 1, ease: bounce }, 0.1)
            .staggerTo(not, 0.3, { autoAlpha: 1, ease: elastic }, 0.1)
-            .staggerTo(el, 0.3, { autoAlpha: 1, onComplete: done }, 0.1);
+            .staggerTo(el, 0.3, { autoAlpha: 1 }, 0.1);
         }
 
 
@@ -96,10 +96,10 @@ module.exports = {
 
 
       tl.staggerFromTo(tg, 0.3, { autoAlpha: 1, ease: elastic }, { autoAlpha: 0, ease: elastic }, 0.1)
-      .staggerFromTo(st, 0.3, { autoAlpha: 1, ease: elastic }, { autoAlpha: 0, ease: elastic }, 0.1)
+      .staggerFromTo(st, 0.3, { autoAlpha: 1, ease: elastic }, { autoAlpha: 0, ease: elastic, onComplete: done }, 0.1)
       .staggerTo(not, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
       .staggerTo(hero, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
-       .staggerTo(el, 0.3, { autoAlpha: 0, onComplete: done }, 0.1);
+       .staggerTo(el, 0.3, { autoAlpha: 0 }, 0.1);
     }
   },
   /*
