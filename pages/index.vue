@@ -201,7 +201,7 @@ export default {
         var img = document.querySelector('.hero-body')
 
       for (var i = 0; i < Length; i++) {
-tl.fromTo(`section.panel-${i}`, 1.5, {
+tl.fromTo(`.panel-${i}`, 1.5, {
           autoAlpha: 1,
           y: "0",
           ease: this.$gsap.Linear.easeNone
@@ -209,11 +209,12 @@ tl.fromTo(`section.panel-${i}`, 1.5, {
           autoAlpha: 0,
           y: 0,
           ease: this.$gsap.Linear.easeNone
-        })
+        });
 
       if (i !== 0) {
         // For each panel except the one whom index is 0, create the tween and add it to the tl timeline
-        tl.fromTo(`section.panel-${i}`, 1.5, {autoAlpha: 1,
+        tl
+        .fromTo(`.panel-${i} .title`, 1.5, {autoAlpha: 1,
           y: "0",
           ease: this.$gsap.Linear.easeNone
         }, {
@@ -221,6 +222,14 @@ tl.fromTo(`section.panel-${i}`, 1.5, {
           y: 0,
           ease: this.$gsap.Linear.easeNone
         })
+        .fromTo(`.panel-${i}`, 1.5, {autoAlpha: 1,
+          y: "0",
+          ease: this.$gsap.Linear.easeNone
+        }, {
+          autoAlpha: 0,
+          y: 0,
+          ease: this.$gsap.Linear.easeNone
+        });
       console.log('loading...')
 
 
