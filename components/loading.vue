@@ -38,7 +38,7 @@ export default {
       const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
 
 
-       tl2.staggerTo(img,0,{opacity:0},0.08);
+       tl2.staggerTo(img,0,{opacity:0, onComplete: this.loading = !this.loading},0.08);
          console.log('finished start')
     }
     },
@@ -48,7 +48,7 @@ this.animate()
     },
     finish () {
 
-   this.loading = false
+
        console.log('finished load')
 
     }
