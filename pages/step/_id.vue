@@ -8,10 +8,10 @@
   <div class="hero-body">
     <div class="container has-text-center">
 
-      <span class="title has-text-center">
-        K-Beauty <span class="subtitle">
+      
+        <nuxt-link to="/" exact><span class="title has-text-center">K-Beauty </span></nuxt-link> <span class="subtitle">
         The&nbsp;LA&nbsp;Way 💁🏻‍🇰🇷
-      </span>
+     
       </span>     <a href="https://www.nigelbeauty.com/">
           <img src="../../assets/nigel.svg" class="logo" alt="Logo">
           </a>
@@ -43,7 +43,23 @@
           </figure>
 
                 <div class="step-number">
-         {{paramStep.text}}
+         STEP {{paramStep.text}}: {{paramStep.heading}} {{paramStep.productname}}
+      </div>
+    
+        </div>
+       </article>
+      </div>
+      <div v-packery-item 
+          :data-size="true" 
+          :index="paramStep.id" 
+          :key="paramStep.id"
+          class="column packery-item param-item">
+        <article>
+        <div class="notification is-bold">
+    
+
+                <div class="step-number">
+         STEP {{paramStep.text}}
       </div> <h4 class="title">{{paramStep.heading}}</h4>
        <div class="productname is-danger title">
          {{paramStep.productname}}
@@ -59,9 +75,9 @@
                 <span>Shop {{paramStep.productname}}</span>
               </a>
               </span>
-              <span class="control">
+              <span v-if="paramStep.id !== 10" class="control">
                   <nuxt-link :to="`/step/${paramStep.id + 1}`" class="button is-rounded is-outlined">
-                <span>Next Product</span>
+                <span>Next Step</span>
               </nuxt-link></span>
               </p>
         </div>
@@ -76,7 +92,7 @@
           </figure>
 
                 <div class="step-number">
-         {{stp.text}}
+         STEP {{stp.text}}
       </div> <h4 class="title">{{stp.heading}} 
        <span class="productname" v-if="stp.clicked">
          {{stp.productname}}
@@ -90,6 +106,17 @@
    </div>
 </div>
 </section>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>10 Step K-Beauty Regimen</strong> by <a href="https://www.nigelbeauty.com">Nigel Beauty</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>
 </div>
 </template>
 
@@ -171,6 +198,7 @@ hideSteps() {
 </script>
 
 <style scoped>
+.param-item.packery-item .notification {background:#FFFAF9;}
 .notification {transition: width 0.4s, height 0.4s;}
 .step-number {font-weight:900;display:inline-block;}
 .steps {margin-top: 48px; padding: calc(24px + 2vw);font-weight: 200;}
