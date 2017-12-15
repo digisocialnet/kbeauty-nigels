@@ -452,7 +452,7 @@ export default {
 
   onComplete: function(){
     this.$store.commit('updateModelState', this.modelstate)
-      this.form["form-name"] = "rental-app";
+      this.modelstate["form-name"] = "rental-app";
       this.$axios.setHeader(
         "Content-Type",
         "application/x-www-form-url-encoded",

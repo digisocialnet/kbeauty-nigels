@@ -21,7 +21,7 @@
   </div>
 
   <div class="hero-foot">
-
+We will be in contact soon.
   </div>
 </section>
 </div>
