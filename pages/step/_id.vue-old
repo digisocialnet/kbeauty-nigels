@@ -1,86 +1,104 @@
-
 <template>
-<section class="section step-wrap">
-  <div class="container-fluid wrp">
-<div class="columns is-gapless">
-  <div class="column is-half left">
+<div>
 
-<section class="hero is-pink is-bold" :style="`background:url(${paramStep.image}),linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.4) 100%);background-color:RGBA(254,234,233,.8);background-size:cover;background-blend-mode: soft-light, darken;`">
-  <div class="hero-head">
-  </div>
+<section>
+  <div class="steps container is-fluid">
 
-  <div class="hero-body">
+  <div class="columns is-multiline is-variable is-5">
+          <div
+          :data-size="true"
+          :index="paramStep.id"
+          :key="paramStep.id"
+          class="packery-item param-item">
+        <article>
+        <div class="notification is-bold">
+          <figure v-if="paramStep.image" class="image is-1by1">
+          <img :src="paramStep.image">
+          </figure>
 
-    <div class="content">
+                <div class="step-number el tiny">
+        {{paramStep.heading}} {{paramStep.productname}}
+      </div>
+
+        </div>
+       </article>
+      </div>
+      <div
+          :data-size="true"
+          :index="paramStep.id"
+          :key="paramStep.id"
+          class="packery-item param-item">
+        <article>
+        <div class="notification is-bold">
 
 
-
-        <div><a href="https://www.nigelbeauty.com/">
-          <img src="../../assets/nigel.svg" class="el logo" alt="Logo">
-          </a></div>
-
-<h4 class="title el">{{paramStep.heading}} <span class="step-number">
-  <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link>
-      </span></h4>
+                <div class="step-number">
+         <span class="tag is-success el">STEP {{paramStep.text}}</span>
+      </div> <h4 class="title el">{{paramStep.heading}}</h4>
        <div class="productname el has-text-danger subtitle">
-         {{paramStep.productname}} <span class="tag el">STEP {{paramStep.text}}</span>
+         {{paramStep.productname}}
        </div>
 
-       <p class="field box">
-         <span class="control">
-    <a :href="paramStep.url" target="_blank" class="el button is-rounded is-outlined">
-                <span>Shop for {{paramStep.heading}}</span>
-              </a>
-              </span>
-              <span v-if="paramStep.id !== 10" class="control">
-                  <nuxt-link :to="`/step/${paramStep.id + 1}`" class="el button is-rounded is-outlined cta-main">
-                <span>Next Step ➜ </span>
-
-              </nuxt-link></span>
-              </p>
        <p class="description el">
          {{ paramStep.fulltext }}
        </p>
        <BR/>
-<share/>
+       <p class="field box">
+         <span class="control">
+    <a :href="paramStep.url" target="_new" class="el button is-rounded is-outlined">
+                <span>Shop for {{paramStep.heading}}</span>
+              </a>
+              </span>
+              <span v-if="paramStep.id !== 10" class="control">
+                  <nuxt-link :to="`/step/${paramStep.id + 1}`" class="el button is-rounded is-outlined">
+                <span>Next Step ➜ </span>
 
-    </div>
-  </div>
+              </nuxt-link></span>
+              </p>
+        </div>
+       </article>
+      </div>
+      <div v-for="(stp, index) in hideSteps" :data-size="stp.size | booleanfilt" :index="stp.id" :key="stp.slug"
+    :class="{ currentParam: currentParam == stp.id}" class="packery-item step">
+        <article><nuxt-link :to="`/step/${stp.id}`">
+        <div class="notification step is-pink-outline is-bold">
+          <figure v-if="stp.image" class="image is-1by1">
+          <img :src="stp.image">
+          </figure>
 
-  <div class="hero-foot">
-       <div class="content">
+                <div class="step-number">
+         STEP {{stp.text}}
+      </div> <h4 class="el title">{{stp.heading}}
+       <span class="el productname" v-if="stp.clicked">
+         {{stp.productname}}
+       </span></h4>
 
+        </div>
+        </nuxt-link>
+       </article>
+      </div>
+
+   </div>
 </div>
-  </div>
 </section>
-
-
-
-    <k-footer/>
+<k-footer/>
 </div>
-  <div class="column is-half aside"><steps :steps="steps.regimen"/></div>
-</div>
-</div>
-</section>
 </template>
 
 <script>
 import kFooter from '~/components/k-footer'
 import anime from 'animejs'
-import steps from '~/components/steps'
-import share from '~/components/share'
 
   export default {
     data () {
       return {
         currentParam: this.$route.params.id,
-        title: 'K-Beauty Step' + this.$route.params.id
+        title: 'K-Beauty Step'
       }
     },
     components:{
-kFooter,
-steps,
-share
+kFooter
+
     },
     filters: {
 booleanfilt (value) {
@@ -130,23 +148,6 @@ hideSteps() {
 </script>
 
 <style scoped>
-
-.field.box {margin-top:16px;background: rgba(255,255,255,.7);}
-.animatedimage {width: 50px;
-  height: 50px;
-  background: url('~/assets/ico.svg') left center;
-  background-repeat: repeat-x;
-  background-size: 1300% 100%;
-  backface-visibility: hidden;
-  display: inline-block;
-  animation: play 2.5s steps(13) infinite;}
-  @keyframes play {
-   100% { background-position: -1300px; }
-}
-.wrp {height:100vh;}
-.step-wrap .tag {letter-spacing: 0px !important;font-size: 13px;color:RGBA(160,138,137,1.00);background: RGBA(255,255,255,0.8);border:2px solid RGBA(255,255,255,0.8);box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);line-height: 1.4;font-weight:600;}
-.aside, .left {overflow-y:auto;max-height:100vh;width:50vw;}
-.step-wrap .logo {position: absolute;top:20px;left:20px;height:16px;  fill: #7a707a;}
 body{font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
 .title, .subtitle {font-family:orpheuspro,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
 .param-item.packery-item .notification {background:#FFFAF9;}
@@ -172,7 +173,6 @@ body{font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Robo
   transition-delay: .25s;
 	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
-
 .notification.intro {background-color:#fff;margin: 18px;}
 .notification {padding: 36px; color:#B19998;flex: 1 0 auto;}
 a.button span {color:#7a707a;font-weight: 700;}
@@ -212,7 +212,6 @@ z-index:100}
     display: flex;
   }
   .title {letter-spacing: -.4%;}
-
 .is-pink .title {color: #7957D5;}
   .network.offline .circle {
     background: red;
@@ -237,7 +236,7 @@ color: #ff3860;
   max-height:90vh;
   overflow-y: hidden;
 }
-.description {padding-bottom:16px;color:RGBA(160,138,137,1.00);}
+.description {padding-bottom:16px;}
 .packery-item[data-clicked="true"] .description {  overflow-y: scroll;}
 .packery-item[data-clicked="true"] .notification:hover {transform:scale(.99); transition: .3s all;border-width:8px;}
 .packery-item[data-clicked="true"] .notification:active {background: #FEF3F2 ;transform:translateY(3px); transition: .05s all;}
@@ -250,15 +249,9 @@ color: #ff3860;
 
   @media (min-width:100px) and (max-width: 468px) {
     .param-item {width:100% !important;}
-    .title {
-  letter-spacing: -0.01rem;
-}
   }
     @media (min-width:469px) and (max-width: 899) {
     .param-item {width:50% !important;}
-        .title {
-  letter-spacing: -0.01rem;
-}
   }
 
   @media (min-width: 900px) and (max-width: 1199px) {
@@ -306,8 +299,5 @@ color: #ff3860;
 }
    }
    .step-intro .notification {border-color:#fff !important;background-color:#fff !important;}
-   .productname {font-size: 32px;font-weight:400;color:#333;letter-spacing:0;opacity:.8;line-height: 1.3;}
-   @media (max-width: 801px) {
-.aside, .left {overflow-y:auto;max-height:initial;width:100vw;border-left: 1px solid rgba(0,0,0,.1);}
- }
+   .productname {font-size: 32px;font-weight:400;color:#333;letter-spacing:0;}
 </style>

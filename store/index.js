@@ -130,9 +130,6 @@ new Vuex.Store({
       elastic: ''
     }
   },
-  async nuxtServerInit ({ commit }, state) {
-
-  },
   mutations: {
         SET_REGIMEN (state, regimen, {commit}) {
           state.regimen = regimen

@@ -27,29 +27,17 @@ export default {
     loading: false
   }),
   methods: {
-    animate () {
-             if (process.browser) {
-      console.log('loading...')
-      var tl = new this.$gsap.TimelineMax()
-            var tl2=new this.$gsap.TimelineMax({repeat:-1,repeatDelay:1})
 
-      var tg = document.querySelectorAll('.el')
-       var img = document.querySelectorAll('.animatedimage img')
-      const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
-
-
-       tl2.staggerTo(img,0,{opacity:0, onComplete: this.loading = !this.loading},0.08);
-         console.log('finished start')
-    }
-    },
     start () {
+  if (process.browser) {
+
+    }
       this.loading = true
-this.animate()
+
     },
     finish () {
-
-
        console.log('finished load')
+       this.loading = false
 
     }
   }
@@ -71,6 +59,8 @@ this.animate()
   padding-top: 200px;
   font-size: 30px;
   z-index:999;
+  display: flex;
+  align-content: center;
   font-family: sans-serif;
 }
 .loading-page img {position: fixed;  top: 0;

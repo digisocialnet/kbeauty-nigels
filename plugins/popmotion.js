@@ -1,3 +1,4 @@
 import Vue from 'vue'
-import popmotion from 'popmotion'
-Vue.use(popmotion)
+import VueMotion from 'vue-motion'
+
+Vue.use(VueMotion)

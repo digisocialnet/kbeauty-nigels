@@ -1,282 +1,187 @@
+
 <template>
-<div>
-  <div class="pinContainer" ref="pin">
-<section class="hero is-pink is-fullheight is-bold panel-0">
+<section class="section">
+  <div class="container-fluid wrp">
+<div class="columns is-gapless">
+  <div class="column is-half left">
+
+<section class="hero is-pink is-bold">
   <div class="hero-head">
 
   </div>
 
   <div class="hero-body">
-    <div class="container has-text-center">
-         <div class='animatedimage'>
-    <img src='~/assets/icons/1.svg' width='128' height='128' />
-    <img src='~/assets/icons/2.svg' width='128' height='128' />
-    <img src='~/assets/icons/3.svg' width='128' height='128' />
-    <img src='~/assets/icons/4.svg' width='128' height='128' />
-    <img src='~/assets/icons/5.svg' width='128' height='128' />
-    <img src='~/assets/icons/6.svg' width='128' height='128' />
-    <img src='~/assets/icons/7.svg' width='128' height='128' />
-    <img src='~/assets/icons/8.svg' width='128' height='128' />
-    <img src='~/assets/icons/9.svg' width='128' height='128' />
-    <img src='~/assets/icons/10.svg' width='128' height='128' />
-    <img src='~/assets/icons/11.svg' width='128' height='128' />
-    <img src='~/assets/icons/12.svg' width='128' height='128' />
-    <img src='~/assets/icons/13.svg' width='128' height='128' />
+    <div class="content">
 
-    <!-- With this preloader, the 'empty' frame is the last frame, so we set image 16 to be the poster. animation will always start from the first image, which works well in this case -->
-  </div>
+ <div class='animatedimage'></div>
+        <nuxt-link to="/" exact><span class="title has-text-center el">K-Beauty:<br/><small>Perfect Skin in 10 Steps</small></span></nuxt-link>  <a href="https://www.nigelbeauty.com/">
+          <img src="../assets/nigel.svg" class="el logo" alt="Logo">
+          </a>
+                       <p class="field box">
 
+
+                       <span class="control">
+    <a href="https://www.nigelbeauty.com/c-700-new-k-beauty.aspx" target="_new" class="el button is-rounded is-outlined">
+                <span>Shop for K-Beauty</span>
+              </a>&nbsp;
+              </span>
+                <span class="control">
+                  <nuxt-link to="/step/1" class="el button is-rounded is-outlined cta-main">
+                <span>Start Step 1 ➜ </span>
+
+              </nuxt-link></span>
+              </p>
+              <div class="content description"> {{steps.intro.text}}<br/><br/>
+<share />
+
+              </div>
     </div>
   </div>
 
   <div class="hero-foot">
+       <div class="content">
 
-  </div>
-</section>
-<section class="hero is-pink is-fullheight is-bold panel-1">
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-          <img src="../assets/nigel.svg" class="logo" alt="Logo">
-          </a>
-
-
-        </div>
-        <div id="navbarMenuHeroB" class="navbar-menu">
-          <div class="navbar-end">
-            <span class="navbar-item">
-              <a href="https://www.nigelbeauty.com/c-700-new-k-beauty.aspx" class="button is-info is-inverted">
-                <span>Shop K-Beauty</span>
-              </a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <div class="hero-body">
-    <div class="container has-text-center">
-      <span class="title has-text-center">
-        K-Beauty <span class="subtitle">
-        The&nbsp;LA&nbsp;Way 💁🏻‍🇰🇷
-      </span>
-      </span>
-
-    </div>
-  </div>
-
-  <div class="hero-foot">
-
-  </div>
-</section>
-<section class="hero is-pink is-fullheight is-bold panel-2">
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-          <img src="../assets/nigel.svg" class="logo" alt="Logo">
-          </a>
-
-
-        </div>
-        <div id="navbarMenuHeroB" class="navbar-menu">
-          <div class="navbar-end">
-            <span class="navbar-item">
-              <a href="https://www.nigelbeauty.com/c-700-new-k-beauty.aspx" class="button is-info is-inverted">
-                <span>Shop K-Beauty</span>
-              </a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <div class="hero-body">
-    <div class="container has-text-center">
-        <article>
-        <h4 class="title is-primary">
-        {{steps.intro.heading}}
-      </h4>
-        <h5>
-         {{steps.intro.text}}
-      </h5>
-
-       </article>
-
-    </div>
-  </div>
-
-
-</section>
 </div>
-<section>
-  <div class="steps container is-fluid">
+  </div>
+</section>
 
-  <div class="columns is-multiline is-variable is-5" v-packery="{itemSelector: '.packery-item', percentPosition: true,isInstant:true}">
 
-      <div v-packery-item v-if="stp.id != 0" v-for="(stp, index) in steps.regimen" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="stp.id" class="column packery-item step">
-        <article><nuxt-link :to="`/step/${stp.id}`">
-        <div class="notification step is-pink-outline is-bold">
-          <figure v-if="stp.image" class="image is-1by1">
-          <img :src="stp.image">
-          </figure>
 
-                <div class="step-number">
-         STEP {{stp.text}}
-      </div> <h4 class="title">{{ stp.heading }}
-       <span class="productname">
-         {{stp.productname}}
-       </span>
-</h4>
-
-        </div></nuxt-link>
-       </article>
-      </div>
-
-   </div>
+    <k-footer/>
+</div>
+  <div class="column is-half aside"><steps :steps="steps.regimen"/></div>
+</div>
 </div>
 </section>
-<k-footer/>
-  </div>
 </template>
 
 <script>
 import kFooter from "~/components/k-footer";
+import steps from "~/components/steps";
+import share from "~/components/share";
 
 export default {
   data() {
     return {
+      title: "K-Beauty"
     };
   },
-  transition: 'page',
+  head() {
+    return {
+      title: this.title
+    };
+  },
   components: {
-    kFooter
+    kFooter,
+    steps,
+    share
   },
   mounted() {
-     if (process.browser) {
-    this.$nextTick(this.pinContainerScene);
-     }
-  },
-  filters: {
-    booleanfilt(value) {
-      return Boolean(value);
+    if (process.browser) {
     }
   },
+
   computed: {
     steps() {
       return this.$store.state;
     }
   },
-  destroyed() {
-
-    this.$ksvuescr.$emit("destroy");
-
-  },
-  methods: {
- animate () {
-             if (process.browser) {
-      console.log('loading...')
-      var tl = new this.$gsap.TimelineMax()
-            var tl2=new this.$gsap.TimelineMax({repeat:-1,repeatDelay:1})
-
-      var tg = document.querySelectorAll('.el')
-       var img = document.querySelectorAll('.animatedimage img')
-      const elastic = this.$gsap.Elastic.easeOut.config(2, 0.3)
-
-
-      tl.staggerTo(tg, 0.3, { autoAlpha: 0, ease: elastic }, 0.1)
-       tl2.staggerTo(img,0,{opacity:0},0.08);
-         console.log('finished start')
-    }
-    },
-    pinContainerScene() {
-       if (process.browser) {
-      const Length = 3;
-      const tl = new this.$gsap.TimelineMax();
-        var img = document.querySelector('.hero-body')
-
-      for (var i = 0; i < Length; i++) {
-tl.fromTo(`.panel-${i}`, 1.5, {
-          autoAlpha: 1,
-          y: "0",
-          ease: this.$gsap.Linear.easeNone
-        }, {
-          autoAlpha: 0,
-          y: 0,
-          ease: this.$gsap.Linear.easeNone
-        });
-
-      if (i !== 0) {
-        // For each panel except the one whom index is 0, create the tween and add it to the tl timeline
-        tl
-        .fromTo(`.panel-${i} .title`, 1.5, {autoAlpha: 1,
-          y: "0",
-          ease: this.$gsap.Linear.easeNone
-        }, {
-          autoAlpha: 0,
-          y: 0,
-          ease: this.$gsap.Linear.easeNone
-        })
-        .fromTo(`.panel-${i}`, 1.5, {autoAlpha: 1,
-          y: "0",
-          ease: this.$gsap.Linear.easeNone
-        }, {
-          autoAlpha: 0,
-          y: 0,
-          ease: this.$gsap.Linear.easeNone
-        });
-      console.log('loading...')
-
-
-
-
-
-      const scene = new this.$scrollmagic.Scene({
-        triggerElement: '.pinContainer',
-        triggerHook: "onEnter",
-        duration: '300%'
-      })
-        .setPin(`section.panel-${i}`)
-        .setTween(tl)
-
-
-         console.log('finished start')
-    };
-
-}
-
-      // Add scene to ScrollMagic controller by emiting an 'addScene' event on vm.$ksvuescr (which is our global event bus)
-      this.$ksvuescr.$emit("addScene", "pinContainerScene", scene);
-
-      // TAAAAAAADAAAAAAAAAAAA
-    }
-    }
-  }
+  destroyed() {},
+  methods: {}
 };
 </script>
 
-<style scoped>
-.pinContainer {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
+<style>
+.description {
+  color: RGBA(160, 138, 137, 1);
+  line-height: 1.8;
+  font-size: 1.2rem;
 }
-.pinContainer section {
-  height: 100%;
-  width: 100%;
+.button {
+  background: RGBA(255, 94, 126, 1);
+}
+.cta-main {
+  background: RGBA(29, 60, 101, 1);
+}
+.button span {
+  color: #fff !important;
+  transition: 0.3s all;
+}
+.cta-main:hover {
+  transition: 0.3s all;
+}
+.title small {
+  opacity: 0.6;
+  font-size: 80%;
+}
+.box {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5) 100%,
+    rgba(255, 255, 255, 0.2) 4%
+  );
+}
+.field.box {
+  margin-top: 16px;
+}
+.logo {
   position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+  height: auto;
+  fill: #7a707a;
 }
+.section {
+  padding: 0;
+}
+.wrp {
+  height: 100vh;
+}
+.left {
+  background: RGBA(254, 242, 242, 1);
+}
+.aside,
+.left {
+  overflow-y: auto;
+  max-height: 100vh;
+  width: 50vw;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.aside {
+  background: linear-gradient(
+    0deg,
+    RGBA(255, 255, 255, 1) 43%,
+    RGBA(119, 130, 154, 0.1) 100%
+  );
+}
+@media (max-width: 801px) {
+  .aside,
+  .left {
+    overflow-y: auto;
+    max-height: initial;
+    width: 100vw;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  footer.footer {
+    display: none;
+  }
+}
+.animatedimage {
+  width: 300px;
+  height: 300px;
+  background: url("~/assets/ico.svg") left center;
+  background-repeat: repeat-x;
+  background-size: cover;
+  backface-visibility: hidden;
+  animation: play 2.5s steps(13) infinite;
+}
+@keyframes play {
+  100% {
+    background-position: -3900px;
+  }
+}
+
 body {
   font-family: "futura-pt", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -295,9 +200,12 @@ body {
   display: inline-block;
 }
 .steps {
-  margin-top: 48px;
-  padding: calc(24px + 2vw);
+  margin-top: 24px;
+  padding: calc(24px + 1vw);
   font-weight: 200;
+}
+.steps.container {
+  margin: 16px;
 }
 .slide-enter-active,
 .slide-leave-active {
@@ -335,7 +243,7 @@ a.button span {
   background: #feeae9;
 }
 .step .title {
-  font-size: calc(20px + 1.7vw);
+  font-size: calc(16px + 1.7vw);
 }
 .grid-sizer {
   height: 200px;
@@ -375,14 +283,9 @@ figure img {
   z-index: 100;
 }
 
-.logo {
-  height: 24px;
-  width: auto;
-  fill: #7a707a;
-}
 .hero.is-pink .title {
   color: #1d3c65;
-  font-weight: 100;
+  font-weight: 300;
   font-size: calc(44px + (160 - 100) * (100vw - 300px) / (1920 - 300));
 }
 .network {
@@ -422,191 +325,5 @@ figure img {
 }
 h4.title {
   color: #1d3c65;
-}
-.packery-item {
-  display: flex;
-  flex-direction: column;
-}
-.packery-item article {
-  padding-right: 4px;
-  padding-left: 4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  cursor: pointer;
-}
-.packery-item[data-clicked="true"] .notification {
-  border: 6px solid #ffcdca;
-  z-index: 101;
-  transition: 0.3s all;
-}
-
-.packery-item[data-clicked="true"] .title {
-  color: #ff3860;
-}
-
-.packery-item[data-clicked="true"] .notification {
-  box-shadow: 7px 9px 105px 0px rgba(0, 0, 0, 0.3);
-  border-color: #ff3860;
-  transition: 0.3s all ease-in-out;
-  max-height: 90vh;
-  overflow-y: hidden;
-}
-.description {
-  padding-bottom: 16px;
-}
-.packery-item[data-clicked="true"] .description {
-  overflow-y: scroll;
-}
-.packery-item[data-clicked="true"] .notification:hover {
-  background: #fff;
-  transform: scale(0.99);
-  transition: 0.3s all;
-  border-width: 8px;
-}
-.packery-item[data-clicked="true"] .notification:active {
-  background: #fef3f2;
-  transform: translateY(3px);
-  transition: 0.05s all;
-}
-.packery-item[data-clicked="true"] .notification:hover h4.title {
-  opacity: 0.7;
-}
-.packery-item[data-clicked="true"] .notification:active h4.title {
-  opacity: 0.3;
-}
-
-@media (min-width: 280px) and (max-width: 799px) {
-  .packery-item,
-  .packery-item[data-size="false"] {
-    width: 100%;
-  }
-  .notification {
-    padding: 9px;
-    margin-bottom: 9px;
-  }
-  .packery-item[data-size="true"] {
-    width: 100%;
-  }
-  .step.notification .step-number {
-    margin: auto 8px;
-  }
-  .step.notification {
-    width: 100%;
-  }
-  .step.notification > * {
-    display: inline-block;
-    position: relative;
-  }
-  .step-number,
-  h4.title {
-    top: -32px;
-  }
-  .packery-item[data-clicked="true"] figure.image,
-  .step-number,
-  h4.title {
-    margin: initial;
-  }
-  .packery-item[data-clicked="true"] .step.notification > * {
-    display: block;
-  }
-  .packery-item[data-clicked="true"] .step.notification {
-    display: inherit;
-  }
-  .packery-item[data-clicked="true"] .notification:active * {
-    opacity: 0;
-    display: inherit;
-  }
-  .packery-item[data-clicked="true"] figure.image,
-  .packery-item[data-clicked="true"] figure.image img {
-    width: auto;
-    height: 50%;
-    position: ;
-  }
-  .step.notification img,
-  .step.notification figure {
-    width: 64px;
-    height: 64px;
-  }
-  .image.is-1by1 {
-    padding-top: 0;
-  }
-}
-
-@media (min-width: 800px) and (max-width: 1079px) {
-  .packery-item,
-  .packery-item[data-size="false"] {
-    width: 50%;
-  }
-  .image.is-1by1,
-  .image.is-square {
-    padding-top: 0;
-  }
-  .step-number,
-  h4.title {
-    top: -32px;
-  }
-  .step.notification > * {
-    display: inline-block;
-    position: relative;
-  }
-  .step.notification img,
-  .step.notification figure {
-    width: 128px;
-    height: 128px;
-  }
-  .notification {
-    padding: 18px;
-    margin-bottom: 9px;
-    display: flex;
-    align-items: center;
-  }
-  .packery-item[data-size="true"],
-  .active.packery-item[data-size="true"] {
-    width: 100%;
-  }
-  .step.notification {
-    display: relative;
-  }
-  .step.notification figure {
-    margin-bottom: 0;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1600px) {
-  .packery-item,
-  .packery-item[data-size="false"] {
-    width: 25%;
-  }
-  .packery-item[data-size="true"],
-  .active.packery-item[data-size="false"] {
-    width: 50%;
-  }
-  .packery-item[data-size="2"] {
-    width: 75%;
-  }
-}
-
-@media (min-width: 1601px) {
-  .packery-item,
-  .packery-item[data-size="false"] {
-    width: 20%;
-  }
-  .packery-item[data-size="true"],
-  .active.packery-item[data-size="false"] {
-    width: 40%;
-  }
-  .packery-item[data-size="2"] {
-    width: 60%;
-  }
-}
-.step-intro .notification {
-  border-color: #fff !important;
-  background-color: #fff !important;
-}
-.productname {
-  font-size: 14px;
-  font-weight: 400;
-  color: #333;
-  letter-spacing: 0;
 }
 </style>
