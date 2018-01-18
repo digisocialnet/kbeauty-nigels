@@ -53,12 +53,12 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: false,
+  loading: { color: '#FF5E7E', height: '3px' },,
   /*
   ** Customize app manifest
   */
   manifest: {
-    theme_color: '#3B8070'
+    theme_color: '#FF5E7E'
   },
   plugins: [
     '~plugins/buefy',
