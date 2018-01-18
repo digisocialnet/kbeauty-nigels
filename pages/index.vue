@@ -96,7 +96,7 @@ export default {
   color: RGBA(160, 138, 137, 1);
   line-height: 1.8;
   font-size: 1.2rem;
-  width: 74ch;
+  max-width: 74ch;
 }
 .button {
   background: RGBA(255, 94, 126, 1);
