@@ -245,7 +245,7 @@ color: #ff3860;
   max-height:90vh;
   overflow-y: hidden;
 }
-.description {padding-bottom:16px;color:RGBA(160,138,137,1.00);}
+.description {padding-bottom:16px;color:RGBA(160,138,137,1.00);width:74ch;}
 .packery-item[data-clicked="true"] .description {  overflow-y: scroll;}
 .packery-item[data-clicked="true"] .notification:hover {transform:scale(.99); transition: .3s all;border-width:8px;}
 .packery-item[data-clicked="true"] .notification:active {background: #FEF3F2 ;transform:translateY(3px); transition: .05s all;}
