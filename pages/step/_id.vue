@@ -23,10 +23,15 @@
   <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link>
       </span></h4>
        <div class="productname el has-text-danger subtitle">
-         {{paramStep.productname}} <span class="tag el">STEP {{paramStep.text}}</span>
+         <span class="tag el">STEP {{paramStep.text}}</span> {{paramStep.productname}} 
        </div>
+<div class="columns">
+  <div class="column is-half"><figure><img :src="paramStep.image" class="el prodphoto" :alt="paramStep.productname"></figure></div>
+  <div class="column is-half">   </div>
 
-       <p class="field box">
+</div>
+
+<div class="field box">
          <span class="control">
     <a :href="paramStep.url" target="_blank" class="el button is-rounded is-outlined">
                 <span>Shop for {{paramStep.heading}}</span>
@@ -37,10 +42,12 @@
                 <span>Next Step ➜ </span>
 
               </nuxt-link></span>
-              </p>
-       <p class="description el">
-         {{ paramStep.fulltext }}
-       </p>
+              </div>
+
+
+       <p class="description el" v-html="paramStep.fulltext"></p>
+
+
        <BR/>
 <share/>
 
@@ -131,7 +138,8 @@ hideSteps() {
 
 <style scoped>
 
-.field.box {margin-top:16px;background: rgba(255,255,255,.7);}
+.prodphoto {height:auto;width:40vw;border: 2px solid #FEEAE9;border-radius:8px;margin-right:8px;}
+.field.box {margin-top:16px;background: rgba(255,255,255,.2);}
 .animatedimage {width: 50px;
   height: 50px;
   background: url('~/assets/ico.svg') left center;
@@ -148,7 +156,7 @@ hideSteps() {
 .aside, .left {overflow-y:auto;max-height:100vh;width:50vw;}
 .step-wrap .logo {position: absolute;top:20px;left:20px;height:16px;  fill: #7a707a;}
 body{font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
-.title, .subtitle {font-family:orpheuspro,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+.title, .subtitle {    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);font-family:orpheuspro,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
 .param-item.packery-item .notification {background:#FFFAF9;}
 .notification {transition: width 0.4s, height 0.4s;}
 .step-number {font-weight:900;display:inline-block;}
@@ -306,8 +314,11 @@ color: #ff3860;
 }
    }
    .step-intro .notification {border-color:#fff !important;background-color:#fff !important;}
-   .productname {font-size: 32px;font-weight:400;color:#333;letter-spacing:0;opacity:.8;line-height: 1.3;}
+   .productname {display:block;font-size: 32px;font-weight:400;color:#333;letter-spacing:0;opacity:.8;line-height: 1.3;}
    @media (max-width: 801px) {
 .aside, .left {overflow-y:auto;max-height:initial;width:100vw;border-left: 1px solid rgba(0,0,0,.1);}
  }
+.is-pink .productname {font-size: 28px !important;}
+.content,.notification {text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);}
+.description a {color:#77829A !important; font-weight: 700;}
 </style>

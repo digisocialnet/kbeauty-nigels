@@ -5119,8 +5119,10 @@ a.tag:hover {
 .title,
 .subtitle {
   word-break: break-word;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.4);
 }
-
+.content,.notification {text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);}
+.button {    text-shadow: 0 1px 0 rgba(0,0,0, 0.1);}
 .title:not(:last-child),
 .subtitle:not(:last-child) {
   margin-bottom: 1.5rem;

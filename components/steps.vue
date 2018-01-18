@@ -35,7 +35,7 @@ export default {
 }
 </script>
 <style>
-.list-name {color:RGBA(29,60,101,1.00) !important;}
+.list-name {color:RGBA(29,60,101,1.00) !important;font-weight:500;}
 .packery-item {
   display: inline-block;
   flex-direction: column;
@@ -137,9 +137,14 @@ export default {
 }
 .productname {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 700 !important;
   color: #333;
   display: inline-block;
   letter-spacing: 0;
+
 }
+.notification .productname {  border-top:1px solid #DEC9C8;
+  padding-top:12px;}
+  .content,.notification {text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);}
+
 </style>

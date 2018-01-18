@@ -99,6 +99,8 @@ export default {
 }
 .button {
   background: RGBA(255, 94, 126, 1);
+  margin-top:2px;
+  margin-bottom:2px;
 }
 .cta-main {
   background: RGBA(29, 60, 101, 1);
