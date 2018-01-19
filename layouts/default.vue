@@ -15,6 +15,38 @@ export default {
   });
     }
   },
+   head() {
+    let product = this.product
+    return {
+      meta: [
+        {
+          hid: `description`,
+          name: 'description',
+          content: "K-Beauty is the latest trend in the beauty world. People are beginning to realize that the secret to great skin lies in the Korean method of layering on multiple targeted products. If you'd like to get the best skin of your life but don't know where to start, experiment with these products from Nigel Beauty in Los Angeles."
+        },
+        {
+          hid: `og:title`,
+          property: 'og:title',
+          content: 'K-Beauty: Perfect Skin in 10 Steps'
+        },
+        {
+          hid: `og:url`,
+          property: 'og:url',
+          content: 'https://kbeauty.nigelbeauty.com'
+        },
+        {
+          hid: `og:image`,
+          property: 'og:image',
+          content: 'https://kbeauty.nigelbeauty.com/kbeauty.jpg'
+        },
+        {
+          hid: `og:description`,
+          property: 'og:description',
+          content: "K-Beauty is the latest trend in the beauty world. People are beginning to realize that the secret to great skin lies in the Korean method of layering on multiple targeted products. If you'd like to get the best skin of your life but don't know where to start, experiment with these products from Nigel Beauty in Los Angeles."
+        }
+      ]
+    }
+  },
   methods: {
 
 
