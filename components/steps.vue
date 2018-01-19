@@ -52,7 +52,7 @@ export default {
   z-index: 101;
   transition: 0.3s all;
 }
-.notification.step {box-shadow: 0px 4px 10px rgba(0,0,0,.1)}
+.notification.step {box-shadow: 4px 4px 10px rgba(255,255,255,.5)}
 
 .packery-item[data-clicked="true"] .title {
   color: #ff3860;
@@ -155,8 +155,8 @@ export default {
   letter-spacing: 0;
 
 }
-.notification .productname {  border-top:1px solid #DEC9C8;
-  padding-top:12px;}
+.notification .productname {  border-top:thin solid #DEC9C8;
+  padding-top:12px;margin-top:12px; display:block;}
   .content,.notification {text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);}
 
 </style>

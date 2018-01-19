@@ -20,7 +20,7 @@
           </a></div>
 
 <h4 class="title el">{{paramStep.heading}} <span class="step-number">
-  <span class="tag el">STEP {{paramStep.text}}</span>
+  <span class="tag el">STEP <strong> {{paramStep.text}}</strong></span>
       </span></h4>
        <div class="productname el has-text-danger subtitle">
          <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link> {{paramStep.productname}} 
@@ -152,7 +152,8 @@ hideSteps() {
    100% { background-position: -1300px; }
 }
 .wrp {height:100vh;}
-.step-wrap .tag {letter-spacing: 0px !important;font-size: 13px;color:RGBA(160,138,137,1.00);background: RGBA(255,255,255,0.8);border:2px solid RGBA(255,255,255,0.8);box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);line-height: 1.4;font-weight:600;}
+.step-wrap .tag {color:#C6B8B6;letter-spacing: 0px !important;font-size: 24px;background: RGBA(255,255,255,0.8);border:2px solid RGBA(255,255,255,0.8);box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);line-height: 1.1;font-weight:700;}
+.step-wrap .tag strong {font-weight:900;margin-left:4px;color:RGBA(160,138,137,1.00);}
 .aside, .left {overflow-y:auto;max-height:100vh;width:50vw;}
 .step-wrap .logo {position: absolute;top:20px;left:20px;height:16px;  fill: #7a707a;}
 body{font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}

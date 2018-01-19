@@ -269,7 +269,7 @@ figure img {
   transition: 0.4s all;
 }
 .is-pink-outline {
-  border: 2px solid #feeae9;
+  border: 2px solid #ffcdca;
   border-radius: 18px;
   background: #fff;
   transition: 0.6s background-color ease-in, 1s border-color ease-in-out,
