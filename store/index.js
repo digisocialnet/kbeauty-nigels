@@ -50,7 +50,7 @@ new Vuex.Store({
         id: 4,
         slug: '4-peel-off-mask',
         url: 'https://www.nigelbeauty.com/p-32584-pore-clear-black-charcoal-peel-off-pack.aspx',
-        productname: 'PureHeals Pore Clear Black Charcoal Peel Off Mask',
+        productname: 'PureHeals Black Charcoal Peel Off Mask',
         image: 'https://www.nigelbeauty.com/images/Product/medium/32584.jpg',
         clicked: false,
         text: '4',

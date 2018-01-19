@@ -6436,6 +6436,10 @@ vue-analytics@^5.4.0:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.8.0.tgz#0df9ce8e6f52f32f1fef597af9debcd2674eea91"
 
+vue-fit-text@robbeman/vue-fit-text:
+  version "0.0.0"
+  resolved "https://codeload.github.com/robbeman/vue-fit-text/tar.gz/dd8277406cd2c030af58007f94f5e5468fc20884"
+
 vue-hot-reload-api@^2.2.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"
@@ -6457,6 +6461,10 @@ vue-loader@^13.6.2:
     vue-hot-reload-api "^2.2.0"
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
+
+vue-match-heights@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vue-match-heights/-/vue-match-heights-0.1.0.tgz#6e09207fa7d9676d648c5f1cae5cf36f45c33833"
 
 vue-meta@^1.4.2:
   version "1.4.2"

@@ -19,11 +19,11 @@
           <img src="../../assets/nigel.svg" class="el logo" alt="Logo">
           </a></div>
 
-<h4 class="title el">{{paramStep.heading}} <span class="step-number">
+<h4 class="title el">{{paramStep.heading}}</h4> <span class="step-number">
   <span class="tag el">STEP <strong> {{paramStep.text}}</strong></span>
-      </span></h4>
+      </span>
        <div class="productname el has-text-danger subtitle">
-         <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link> {{paramStep.productname}} 
+         <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link> {{paramStep.productname}}
        </div>
 <div class="columns">
   <div class="column is-half"><figure><img :src="paramStep.image" class="el prodphoto" :alt="paramStep.productname"></figure></div>
@@ -34,7 +34,7 @@
 <div class="field box el">
          <span class="control">
     <a :href="paramStep.url" target="_blank" class=" button is-rounded is-outlined">
-                <span>Shop for {{paramStep.heading}}</span>
+                <span>Shop Now</span>
               </a>
               </span>
               <span v-if="paramStep.id !== 10" class="control">
@@ -130,7 +130,7 @@ const anime = require('animejs')
   delay: function(el, i, l) {
     return i * 20;
   }
-   
+
 }).add({
   targets: ['.sel'],
   duration: 250,
@@ -200,10 +200,10 @@ const anime = require('animejs')
     done
   }
 });done();
-   
-        
+
+
       }
-     
+
     }
   },
     data () {
@@ -224,7 +224,7 @@ return Boolean(value)
     },
     computed: {
       urlenc() {
-        
+
 return encodeURI(this.paramStep.header)
 
       },
@@ -454,10 +454,16 @@ color: #ff3860;
    .step-intro .notification {border-color:#fff !important;background-color:#fff !important;}
    .productname {display:block;font-size: 32px;font-weight:400;color:#333;letter-spacing:0;opacity:.8;line-height: 1.3;}
    @media (max-width: 801px) {
-     
+
 .aside, .left {overflow-y:auto;max-height:initial;width:100vw;border-left: 1px solid rgba(0,0,0,.1);}
  }
 .is-pink .productname {font-size: 28px !important;}
 .content,.notification {text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);}
 .description a {color:#77829A !important; font-weight: 700;}
+@media screen and (max-width: 801px) {
+.is-hidden-mobile {display:none !important;}
+}
+@media screen and (min-width: 802px) {
+  .is-hidden-desktop {display:none !important;}
+  }
 </style>

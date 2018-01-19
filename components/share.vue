@@ -1,7 +1,7 @@
 <template>
 <div>
  <div><h6 class="sh-header el">Share K-Beauty</h6></div>
- <social-sharing twitter-user="nigelbeauty" title="K-Beauty: Perfect Skin in 10 Steps" description="K-beauty is the latest trend in the beauty world. People are beginning to realize that the secret to great skin lies in the Korean method of layering on multiple targeted products. If you'd like to get the best skin of your life but don't know where to start, experiment with these products from Nigel Beauty in Los Angeles." inline-template>
+ <social-sharing url="https://kbeauty.nigelbeauty.com" hashtags="kbeauty,nigelbeauty" twitter-user="nigelbeauty" title="K-Beauty: Perfect Skin in 10 Steps" description="K-beauty is the latest trend in the beauty world. People are beginning to realize that the secret to great skin lies in the Korean method of layering on multiple targeted products. If you'd like to get the best skin of your life but don't know where to start, experiment with these products from Nigel Beauty in Los Angeles." inline-template>
   <div class="share el">
     <network network="facebook">
       <svg xmlns="http://www.w3.org/2000/svg" aria-label="Facebook" role="img" viewBox="0 0 512 512"><rect width="512" height="512" fill="#3b5998" rx="15%"/><path fill="#fff" d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg> Facebook

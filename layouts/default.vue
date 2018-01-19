@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-  created() {
+  mounted() {
     if (process.browser) {
  var WebFont = require('webfontloader');
 
@@ -20,6 +20,7 @@ export default {
 
   }
 };
+
 </script>
 <style>
 html, body, p, div

@@ -11,7 +11,7 @@
 
                 <div class="sel step-number">
          STEP {{stp.text}}
-      </div> <h4 class="sel title list-name">{{ stp.heading }}
+      </div> <h4 class="sel title"><fit-text class="list-name">{{ stp.heading }}</fit-text>
        <span class="sel productname">
          {{stp.productname}}
        </span>
@@ -25,8 +25,12 @@
 </section>
 </template>
 <script>
+import fitText from '~/components/fitText.vue'
 export default {
   props: ['steps'],
+  components: {
+fitText
+    },
    filters: {
     booleanfilt(value) {
       return Boolean(value);
@@ -35,10 +39,12 @@ export default {
 }
 </script>
 <style>
-.list-name {color:RGBA(29,60,101,1.00) !important;font-weight:500;}
+.list-name {color:RGBA(29,60,101,1.00) !important;font-weight:500;font-family: orpheuspro, Cambria, Cochin, Georgia, Times, Times New Roman,
+    serif;}
 .packery-item {
   display: inline-block;
-  flex-direction: column;
+    flex-direction: column;
+
 }
 .packery-item article {
   padding-right: 4px;
@@ -147,6 +153,7 @@ export default {
   border-color: #fff !important;
   background-color: #fff !important;
 }
+
 .productname {
   font-size: 14px;
   font-weight: 700 !important;

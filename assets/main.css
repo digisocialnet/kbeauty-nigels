@@ -2694,7 +2694,7 @@ a.box:active {
 }
 
 .content figure {
- 
+
   margin-right: 2em;
   text-align: center;
 }
@@ -10776,6 +10776,7 @@ body {
   margin-top: 24px;
   padding: calc(24px + 1vw);
   font-weight: 200;
+
 }
 .steps.container {
   margin: 16px;
@@ -10861,6 +10862,7 @@ figure img {
   font-weight: 300;
   font-size: calc(44px + (160 - 100) * (100vw - 300px) / (1920 - 300));
 }
+.productnname {margin-top:16px;}
 .network {
   font-weight: 400;
   font-size: 1rem;
@@ -10899,8 +10901,11 @@ figure img {
 h4.title {
   color: #1d3c65;
 }
+.left h4.title {display: inline;margin-right:16px;}
+.left .tag {margin-bottom: 8px;}
 @media screen and (max-width: 801px) {
 .is-hidden-mobile {display:none !important;}
+
 }
 @media screen and (min-width: 802px) {
   .is-hidden-desktop {display:none !important;}

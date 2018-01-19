@@ -73,7 +73,8 @@ module.exports = {
     theme_color: '#FF5E7E'
   },
   plugins: [
-    '~plugins/share'
+    '~plugins/share',
+    '~plugins/matchheights'
   ],
   /*
   ** Modules

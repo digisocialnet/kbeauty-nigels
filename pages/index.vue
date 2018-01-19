@@ -235,5 +235,10 @@ export default {
 </script>
 
 <style>
-
+@media screen and (max-width: 801px) {
+.is-hidden-mobile {display:none !important;}
+}
+@media screen and (min-width: 802px) {
+  .is-hidden-desktop {display:none !important;}
+  }
 </style>
