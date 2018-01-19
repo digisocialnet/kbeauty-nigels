@@ -1,5 +1,5 @@
 <template>
-<footer class="footer">
+<footer class="footer el">
     <div class="content has-text-left small">
 
       <p>

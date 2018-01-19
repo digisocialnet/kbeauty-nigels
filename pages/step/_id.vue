@@ -42,11 +42,18 @@
                 <span>Next Step ➜ </span>
 
               </nuxt-link></span>
+                  <span v-if="paramStep.id == 10" class="control">
+                  <a href="https://www.nigelbeauty.com" class="el button is-rounded is-outlined cta-main">
+                <span>Visit Nigel Beauty ➜ </span>
+
+              </a></span>
               </div>
 
 
        <p class="description el" v-html="paramStep.fulltext"></p>
-
+       <h4 v-if="paramStep.id == 10">{{steps.outro.heading}}</h4>
+       <p class="description el" v-if="paramStep.id == 10"  v-html="steps.outro.fulltext"></p>
+<p class="endnav"><nuxt-link v-if="paramStep.id !== 1" class="button is-white is-small" :to="`/step/${paramStep.id - 1}`">Previous</nuxt-link> <nuxt-link v-if="paramStep.id !== 10" class="button is-white is-small" :to="`/step/${paramStep.id + 1}`">Next</nuxt-link> <a target="_blank" :href="`https://www.nigelbeauty.com/t-search.aspx?q=${encodeURI(paramStep.heading)}&idx=test_products_looks_desc&p=0`" class="button is-white is-small">Related Products</a></p>
 
        <BR/>
 <share/>
@@ -73,11 +80,130 @@
 
 <script>
 import kFooter from '~/components/k-footer'
-import anime from 'animejs'
 import steps from '~/components/steps'
 import share from '~/components/share'
+const anime = require('animejs')
+
+
 
   export default {
+    transition: {
+    mode: 'out-in',
+    css: false,
+    enter (el, done) {
+  if (process.browser) {
+      var enter = anime.timeline();
+      enter.add({
+  targets: '.el',
+  duration: 150,
+    opacity:{
+    value: [0,1],
+    elasticity: function(el, i, l) {
+    return (200 + i * 200);
+  },
+    duration: 200,
+    easing: 'easeInOutSine'
+  },
+    translateY:{
+    value: [-20,0],
+    duration: 400,
+    offset: '-=600',
+    elasticity: function(el, i, l) {
+    return (100 + i * 200);
+  },
+    easing: 'easeInOutSine'
+  },
+  delay: function(el, i, l) {
+    return i * 100;
+  }
+}).add({
+  targets: '.step',
+  duration: 250,
+    scale:{
+    value: [0,1],
+    duration: 200,
+    offset: '-=600',
+    easing: 'easeInOutSine'
+  },
+  delay: function(el, i, l) {
+    return i * 20;
+  }
+   
+}).add({
+  targets: ['.sel'],
+  duration: 250,
+    opacity:{
+    value: 1,
+    duration: 200,
+    easing: 'easeInOutSine',
+    offset: '-=200',
+  },
+  delay: function(el, i, l) {
+    return i * 20;
+  },
+    complete: function(done) {
+    done
+  }
+});done();}},
+    leave (el, done) {
+        if (process.browser) {
+      var leave = anime.timeline();
+      leave.add({
+  targets: '.el',
+  duration: 250,
+    opacity:{
+    value: [1,0],
+    elasticity: function(el, i, l) {
+    return (200 + i * 200);
+  },
+    duration: 200,
+    easing: 'easeInOutSine'
+  },
+    translateY:{
+    value: [0,20],
+    duration: 150,
+    elasticity: function(el, i, l) {
+    return (200 + i * 200);
+  },
+    easing: 'easeInOutSine'
+  },
+  delay: function(el, i, l) {
+    return i * 20;
+  }
+}).add({
+  targets: '.step',
+  duration: 250,
+    scale:{
+    value: [0,1],
+    duration: 200,
+    offset: '-=600',
+    easing: 'easeInOutSine'
+  },
+  delay: function(el, i, l) {
+    return i * 20;
+  }
+}).add({
+  targets: ['.sel'],
+  duration: 250,
+    opacity:{
+    value: 0,
+    duration: 200,
+    offset: '-=200',
+    easing: 'easeInOutSine'
+  },
+  delay: function(el, i, l) {
+    return i * 20;
+  },
+    complete: function(done) {
+    done
+  }
+});done();
+   
+        
+      }
+     
+    }
+  },
     data () {
       return {
         currentParam: this.$route.params.id,
@@ -95,6 +221,15 @@ return Boolean(value)
 }
     },
     computed: {
+      urlenc() {
+        
+return encodeURI(this.paramStep.header)
+
+      },
+            prev() {
+return paramStep.id - 1
+
+      },
     steps() {
       return this.$store.state;
     },
@@ -137,7 +272,7 @@ hideSteps() {
 </script>
 
 <style scoped>
-
+.endnav a {margin-right:4px;margin-bottom: 4px;}
 .prodphoto {height:auto;width:40vw;border: 2px solid #FEEAE9;border-radius:8px;margin-right:8px;}
 .field.box {margin-top:16px;background: rgba(255,255,255,.2);}
 .animatedimage {width: 20px;
@@ -152,7 +287,7 @@ hideSteps() {
    100% { background-position: -1300px; }
 }
 .wrp {height:100vh;}
-.step-wrap .tag {color:#C6B8B6;letter-spacing: 0px !important;font-size: 24px;background: RGBA(255,255,255,0.8);border:2px solid RGBA(255,255,255,0.8);box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);line-height: 1.1;font-weight:700;}
+.step-wrap .tag {color:#C6B8B6;letter-spacing: 0px !important;font-size: calc(14px + .3vw);background: RGBA(255,255,255,0.5);border:2px solid RGBA(255,255,255,0.8);box-shadow: 0 2px 3px rgba(10, 10, 10, .3), 0 0 0 1px rgba(10, 10, 10, .3);line-height: 1.1;font-weight:700;}
 .step-wrap .tag strong {font-weight:900;margin-left:4px;color:RGBA(160,138,137,1.00);}
 .aside, .left {overflow-y:auto;max-height:100vh;width:50vw;}
 .step-wrap .logo {position: absolute;top:20px;left:20px;height:16px;  fill: #7a707a;}
@@ -189,7 +324,7 @@ a.button span {color:#7a707a;font-weight: 700;}
 .step .title {font-size:calc( 20px + (160 - 100) * (100vw - 800px) / (1920 - 100) );letter-spacing: -.2vw;}
 .grid-sizer {height: 200px;}
 figure {margin-bottom:16px;}
-figure img {border-radius: 8px;background: #fff;padding: 12px;border:2px solid #FEEAE9;pointer-events:none;}
+figure img {border-radius: 8px;background: #fff;padding: 12px;border:4px solid #FEEAE9;pointer-events:none;}
 .expand, .active {width :100%;min-height: 50vh;transform: scale3d(20);transition: .4s all;}
 .is-pink-outline {border:2px solid #FEEAE9;border-radius: 18px;background: #fff;transition: .6s background-color ease-in, 1s border-color ease-in-out, .4s transform ease;}
 .step:hover {background: #FEF3F2;border:2px solid #FFCDCA;transition: 1.3s background-color ease-out, .3s border-color ease-in-out, .3s transform cubic-bezier(0, 1, 0.5, 1); transform: scale(1.1) perspective(2000px) rotateY(8deg) translate3d(8px,0,0);
@@ -198,7 +333,7 @@ z-index:100}
 .notification .box:hover {transform: scale(1.003);transition: transform .3s ease-in;}
 .param-item .notification  {background:#F28292;border:2px solid #FEEAE9;border-radius: 18px;background: #fff;}
 .logo {height:24px;width:auto;fill:#7a707a;}
-.hero.is-pink .title {color:#1D3C65;font-weight: 100;font-size:calc( 44px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
+.hero.is-pink .title {line-height:1.4;color:#1D3C65;font-weight: 100;font-size:calc( 44px + (160 - 100) * (100vw - 300px) / (1920 - 300) )}
   .network {
     font-weight: 400;
     font-size: 1rem;
@@ -227,7 +362,7 @@ z-index:100}
     background: red;
   }
   .param-item h4.title {font-size:5rem;}
-  h4.title {color:#1D3C65;}
+  h4.title {color:#1D3C65;line-height:.8;margin-bottom:8px;}
   .packery-item {display: inline-block;
    flex-direction: column;}
 .packery-item article {padding-right: 4px; padding-left: 4px; padding-top: 4px; padding-bottom: 4px;cursor:pointer;}
@@ -317,6 +452,7 @@ color: #ff3860;
    .step-intro .notification {border-color:#fff !important;background-color:#fff !important;}
    .productname {display:block;font-size: 32px;font-weight:400;color:#333;letter-spacing:0;opacity:.8;line-height: 1.3;}
    @media (max-width: 801px) {
+     
 .aside, .left {overflow-y:auto;max-height:initial;width:100vw;border-left: 1px solid rgba(0,0,0,.1);}
  }
 .is-pink .productname {font-size: 28px !important;}

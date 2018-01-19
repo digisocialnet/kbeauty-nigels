@@ -1,8 +1,8 @@
 <template>
 <div>
- <div><h6 class="sh-header">Share K-Beauty</h6></div>
+ <div><h6 class="sh-header el">Share K-Beauty</h6></div>
  <social-sharing twitter-user="nigelbeauty" title="K-Beauty: Perfect Skin in 10 Steps" description="K-beauty is the latest trend in the beauty world. People are beginning to realize that the secret to great skin lies in the Korean method of layering on multiple targeted products. If you'd like to get the best skin of your life but don't know where to start, experiment with these products from Nigel Beauty in Los Angeles." inline-template>
-  <div class="share">
+  <div class="share el">
     <network network="facebook">
       <svg xmlns="http://www.w3.org/2000/svg" aria-label="Facebook" role="img" viewBox="0 0 512 512"><rect width="512" height="512" fill="#3b5998" rx="15%"/><path fill="#fff" d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg> Facebook
     </network>
@@ -31,5 +31,6 @@
 .share span:hover {color:#776766;transition: .3s all;}
 .share {font-weight: 700;font-size:14px;}
 .sh-header {color: #fff;font-size:16px; font-family: orpheuspro, Cambria, Cochin, Georgia, Times, Times New Roman,
-    serif;font-weight:800;}
+    serif;font-weight:800;    border-top: 1px dotted rgba(0,0,0,.1);
+    padding-top: 16px;}
 </style>

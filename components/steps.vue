@@ -5,14 +5,14 @@
       <div :id="'item-sm-' + index" v-if="stp.id != 0" v-for="(stp, index) in steps" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="stp.id" class="column packery-item step">
         <article><nuxt-link :to="`/step/${stp.id}`">
         <div class="notification step is-pink-outline is-bold">
-          <figure v-if="stp.image" class="image is-1by1">
+          <figure v-if="stp.image" class="sel image is-1by1">
           <img :src="stp.image">
           </figure>
 
-                <div class="step-number">
+                <div class="sel step-number">
          STEP {{stp.text}}
-      </div> <h4 class="title list-name">{{ stp.heading }}
-       <span class="productname">
+      </div> <h4 class="sel title list-name">{{ stp.heading }}
+       <span class="sel productname">
          {{stp.productname}}
        </span>
 </h4>

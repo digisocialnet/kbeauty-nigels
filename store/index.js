@@ -114,7 +114,7 @@ new Vuex.Store({
         url: 'https://www.nigelbeauty.com/p-32597-red-cream-50ml.aspx',
         clicked: false,
         text: '10',
-        fulltext: "The final step in your new skincare routine is the Skin&Lab Red Cream. It is a rich moisturizer that is chock full of antioxidants and stem cells to slow down your skin's natural life cycle. Your skin will stay younger longer. Even oily skin can benefit from a thick night cream. The sebaceous glands produce less oil when you treat your face to clean, fresh moisture.",
+        fulltext: "The final step in your new skincare routine is the <a href='https://www.nigelbeauty.com/p-32597-red-cream-50ml.aspx'>Skin&Lab Red Cream</a>. It is a rich moisturizer that is chock full of antioxidants and stem cells to slow down your skin's natural life cycle. Your skin will stay younger longer. Even oily skin can benefit from a thick night cream. The sebaceous glands produce less oil when you treat your face to clean, fresh moisture.",
         size: false}
     ],
     outro:
