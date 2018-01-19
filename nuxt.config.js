@@ -3,8 +3,11 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    extractCSS: true,
     vendor: [
-      'animejs'
+      'animejs',
+      'webfontloader',
+      'vue-social-sharing'
     ]
   },
   render: {
@@ -35,7 +38,16 @@ module.exports = {
     ]
   },
   workbox: {
-
+    runtimeCaching: [
+      {
+        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
+        urlPattern: 'https://www.nigelbeauty.com/.*',
+        // Defaults to `networkFirst` if omitted
+        handler: 'cacheFirst',
+        // Defaults to `GET` if omitted
+        method: 'GET'
+      }
+    ]
   },
   performance: {
     hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
@@ -61,13 +73,15 @@ module.exports = {
     theme_color: '#FF5E7E'
   },
   plugins: [
-    '~plugins/buefy',
     '~plugins/share'
   ],
   /*
   ** Modules
   */
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-32725640-1'
+    }]
   ]
 }

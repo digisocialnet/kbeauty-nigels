@@ -92,7 +92,6 @@ const anime = require('animejs')
 },
     transition: {
     mode: 'out-in',
-    css: false,
     enter (el, done) {
   if (process.browser) {
       var enter = anime.timeline();
