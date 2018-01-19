@@ -24,6 +24,7 @@ export default {
 <style>
 html, body, p, div
 {
+
 font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -31,5 +32,5 @@ font-family:'futura-pt',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+body {  background: #FBEBEA;}
 </style>

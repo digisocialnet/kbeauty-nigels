@@ -52,11 +52,23 @@ export default {
   z-index: 101;
   transition: 0.3s all;
 }
+.notification.step {box-shadow: 0px 4px 10px rgba(0,0,0,.1)}
 
 .packery-item[data-clicked="true"] .title {
   color: #ff3860;
 }
-
+  @media (min-width:100px) and (max-width: 468px) {
+    .param-item {width:100% !important;}
+    .title {
+  letter-spacing: -.01vw;
+}
+  }
+    @media (min-width:469px) and (max-width: 899) {
+    .param-item {width:50% !important;}
+        .title {
+  letter-spacing: -.01vw;
+}
+  }
 .packery-item[data-clicked="true"] .notification {
   box-shadow: 7px 9px 105px 0px rgba(0, 0, 0, 0.3);
   border-color: #ff3860;

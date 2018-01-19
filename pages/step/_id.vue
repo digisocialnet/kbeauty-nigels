@@ -20,10 +20,10 @@
           </a></div>
 
 <h4 class="title el">{{paramStep.heading}} <span class="step-number">
-  <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link>
+  <span class="tag el">STEP {{paramStep.text}}</span>
       </span></h4>
        <div class="productname el has-text-danger subtitle">
-         <span class="tag el">STEP {{paramStep.text}}</span> {{paramStep.productname}} 
+         <nuxt-link to="/" exact><div class='animatedimage'></div></nuxt-link> {{paramStep.productname}} 
        </div>
 <div class="columns">
   <div class="column is-half"><figure><img :src="paramStep.image" class="el prodphoto" :alt="paramStep.productname"></figure></div>
@@ -140,8 +140,8 @@ hideSteps() {
 
 .prodphoto {height:auto;width:40vw;border: 2px solid #FEEAE9;border-radius:8px;margin-right:8px;}
 .field.box {margin-top:16px;background: rgba(255,255,255,.2);}
-.animatedimage {width: 50px;
-  height: 50px;
+.animatedimage {width: 20px;
+  height: 20px;
   background: url('~/assets/ico.svg') left center;
   background-repeat: repeat-x;
   background-size: 1300% 100%;
@@ -219,7 +219,7 @@ z-index:100}
     padding-right: 0;
     display: flex;
   }
-  .title {letter-spacing: -.4%;}
+  .title {letter-spacing: -.1vw;}
 
 .is-pink .title {color: #7957D5;}
   .network.offline .circle {
@@ -259,13 +259,13 @@ color: #ff3860;
   @media (min-width:100px) and (max-width: 468px) {
     .param-item {width:100% !important;}
     .title {
-  letter-spacing: -0.01rem;
+  letter-spacing: 0;
 }
   }
     @media (min-width:469px) and (max-width: 899) {
     .param-item {width:50% !important;}
         .title {
-  letter-spacing: -0.01rem;
+  letter-spacing: 0;
 }
   }
 
