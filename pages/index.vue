@@ -94,18 +94,14 @@ export default {
     elasticity: function(el, i, l) {
     return (200 + i * 200);
   },
-    duration: 200,
-    easing: 'easeInOutSine'
-  },
+    duration: 200  },
     translateY:{
     value: [-20,0],
     duration: 400,
     offset: '-=600',
     elasticity: function(el, i, l) {
     return (100 + i * 200);
-  },
-    easing: 'easeInOutSine'
-  },
+  }  },
   delay: function(el, i, l) {
     return i * 100;
   }
@@ -116,7 +112,6 @@ export default {
     value: [0,1],
     duration: 200,
     offset: '-=600',
-    easing: 'easeInOutSine'
   },
   delay: function(el, i, l) {
     return i * 20;
@@ -128,7 +123,6 @@ export default {
     opacity:{
     value: 1,
     duration: 200,
-    easing: 'easeInOutSine',
     offset: '-=200',
   },
   delay: function(el, i, l) {

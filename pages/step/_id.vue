@@ -31,19 +31,19 @@
 
 </div>
 
-<div class="field box">
+<div class="field box el">
          <span class="control">
-    <a :href="paramStep.url" target="_blank" class="el button is-rounded is-outlined">
+    <a :href="paramStep.url" target="_blank" class=" button is-rounded is-outlined">
                 <span>Shop for {{paramStep.heading}}</span>
               </a>
               </span>
               <span v-if="paramStep.id !== 10" class="control">
-                  <nuxt-link :to="`/step/${paramStep.id + 1}`" class="el button is-rounded is-outlined cta-main">
+                  <nuxt-link :to="`/step/${paramStep.id + 1}`" class="button is-rounded is-outlined cta-main">
                 <span>Next Step ➜ </span>
 
               </nuxt-link></span>
                   <span v-if="paramStep.id == 10" class="control">
-                  <a href="https://www.nigelbeauty.com" class="el button is-rounded is-outlined cta-main">
+                  <a href="https://www.nigelbeauty.com" class="button is-rounded is-outlined cta-main">
                 <span>Visit Nigel Beauty ➜ </span>
 
               </a></span>
@@ -51,9 +51,9 @@
 
 
        <p class="description el" v-html="paramStep.fulltext"></p>
-       <h4 v-if="paramStep.id == 10">{{steps.outro.heading}}</h4>
+       <h4 class="el" v-if="paramStep.id == 10">{{steps.outro.heading}}</h4>
        <p class="description el" v-if="paramStep.id == 10"  v-html="steps.outro.fulltext"></p>
-<p class="endnav"><nuxt-link v-if="paramStep.id !== 1" class="button is-white is-small" :to="`/step/${paramStep.id - 1}`">Previous</nuxt-link> <nuxt-link v-if="paramStep.id !== 10" class="button is-white is-small" :to="`/step/${paramStep.id + 1}`">Next</nuxt-link> <a target="_blank" :href="`https://www.nigelbeauty.com/t-search.aspx?q=${encodeURI(paramStep.heading)}&idx=test_products_looks_desc&p=0`" class="button is-white is-small">Related Products</a></p>
+<p class="endnav el"><nuxt-link v-if="paramStep.id !== 1" class="button is-white is-small" :to="`/step/${paramStep.id - 1}`">Previous</nuxt-link> <nuxt-link v-if="paramStep.id !== 10" class="button is-white is-small" :to="`/step/${paramStep.id + 1}`">Next</nuxt-link> <a target="_blank" :href="`https://www.nigelbeauty.com/t-search.aspx?q=${encodeURI(paramStep.heading)}&idx=test_products_looks_desc&p=0`" class="button is-white is-small">Related Products</a></p>
 
        <BR/>
 <share/>
@@ -87,6 +87,9 @@ const anime = require('animejs')
 
 
   export default {
+    validate ({ params }) {
+  return params.id !== undefined // You can also use redirect if you don't want to display a 404 page
+},
     transition: {
     mode: 'out-in',
     css: false,
