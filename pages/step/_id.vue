@@ -281,7 +281,7 @@ hideSteps() {
   height: 20px;
   background: url('~/assets/ico.svg') left center;
   background-repeat: repeat-x;
-  background-size: 1300% 100%;
+  background-size: 900% 100%;
   backface-visibility: hidden;
   display: inline-block;
   animation: play 2.5s steps(13) infinite;}
