@@ -286,7 +286,7 @@ hideSteps() {
   display: inline-block;
   animation: play 2.5s steps(13) infinite;}
   @keyframes play {
-   100% { background-position: -1300px; }
+   100% { background-position: -180px; }
 }
 .wrp {height:100vh;}
 .step-wrap .tag {color:#C6B8B6;letter-spacing: 0px !important;font-size: calc(14px + .3vw);background: RGBA(255,255,255,0.5);border:2px solid RGBA(255,255,255,0.8);box-shadow: 0 2px 3px rgba(10, 10, 10, .3), 0 0 0 1px rgba(10, 10, 10, .3);line-height: 1.1;font-weight:700;}

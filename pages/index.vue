@@ -47,11 +47,11 @@
 
 
 
-    <k-footer class="is-hidden-mobile"/>
+    <div class="is-hidden-mobile"><k-footer/></div>
 </div>
   <div class="column is-half aside">
     <steps :steps="steps.regimen"/>
-    <k-footer class="is-hidden-desktop"/>
+    <div class="is-hidden-desktop"><k-footer/></div>
     </div>
 </div>
 </div>
@@ -115,7 +115,7 @@ export default {
   delay: function(el, i, l) {
     return i * 20;
   }
-   
+
 }).add({
   targets: ['.sel'],
   duration: 250,
@@ -198,10 +198,10 @@ export default {
     return i * 100;
   }
 });done();
-   
-        
+
+
       }
-     
+
     }
   },
   data() {
@@ -235,10 +235,10 @@ export default {
 </script>
 
 <style>
-@media screen and (max-width: 801px) {
+@media (max-width: 801px) {
 .is-hidden-mobile {display:none !important;}
 }
-@media screen and (min-width: 802px) {
+@media (min-width: 802px) {
   .is-hidden-desktop {display:none !important;}
   }
 </style>
