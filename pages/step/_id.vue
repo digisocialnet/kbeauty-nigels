@@ -91,6 +91,7 @@ const anime = require('animejs')
   return params.id !== undefined // You can also use redirect if you don't want to display a 404 page
 },
     transition: {
+      css: true,
     mode: 'out-in',
     enter (el, done) {
   if (process.browser) {
@@ -118,19 +119,6 @@ const anime = require('animejs')
   delay: function(el, i, l) {
     return i * 100;
   }
-}).add({
-  targets: '.step',
-  duration: 250,
-    scale:{
-    value: [0,1],
-    duration: 200,
-    offset: '-=600',
-    easing: 'easeInOutSine'
-  },
-  delay: function(el, i, l) {
-    return i * 20;
-  }
-
 }).add({
   targets: ['.sel'],
   duration: 250,
@@ -209,7 +197,7 @@ const anime = require('animejs')
     data () {
       return {
         currentParam: this.$route.params.id,
-        title: 'K-Beauty Step' + this.$route.params.id
+        title: 'K-Beauty Step ' + this.$route.params.id
       }
     },
     components:{

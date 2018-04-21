@@ -1,7 +1,7 @@
 <template>
   <section>
   <div class="steps container is-fluid">
-
+<transition-group name="steps" appear>
       <div :id="'item-sm-' + index" v-if="stp.text !== currentindex && stp.id != 0" v-for="(stp, index) in steps" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="`stepnum-${stp.id}`" class="column packery-item step">
         <article><nuxt-link :to="`/step/${stp.id}`">
         <div class="notification step is-pink-outline is-bold">
@@ -21,7 +21,7 @@
        </article>
 
       </div>
-
+</transition-group>
 </div>
 </section>
 </template>
@@ -40,6 +40,18 @@ fitText
 }
 </script>
 <style>
+.packery-item[index="1"] {transition-delay: 150ms;}
+.packery-item[index="2"] {transition-delay: 300ms;}
+.packery-item[index="3"] {transition-delay: 450ms;}
+.packery-item[index="4"] {transition-delay: 600ms;}
+.packery-item[index="5"] {transition-delay: 750ms;}
+.steps-move {transition: transform .6s;}
+.steps-enter-active, .steps-leave-active {
+  transition: opacity .5s, transform .5s;
+}
+.steps-enter, .steps-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;transform: scale(.7) perspective(2000px) rotateY(48deg) translate3d(50px,0,0);
+}
 .list-name {color:RGBA(29,60,101,1.00) !important;font-weight:500;font-family: orpheuspro, Cambria, Cochin, Georgia, Times, Times New Roman,
     serif;}
 .packery-item {
