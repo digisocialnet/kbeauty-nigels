@@ -72,7 +72,7 @@
 
     <k-footer/>
 </div>
-  <div class="column is-half aside"><steps :steps="steps.regimen"/></div>
+  <div class="column is-half aside"><steps :currentindex="currentParam" :steps="shuffleStep"/></div>
 </div>
 </div>
 </section>
@@ -243,10 +243,19 @@ hideSteps() {
       var param = this.currentParam
       return this.$store.state.regimen[param]
 
-      }
+      },
 
+      shuffleStep() {
+        let paramindex = this.currentParam
+        let a = [].concat(this.steps.regimen);
+for (let i = 0; i < paramindex; i++) {
+ var first = a.splice(0,1);
+a.push(first[0]);
+}
 
-  },
+return a
+
+  }},
     mounted () {
 
 

@@ -2,7 +2,7 @@
   <section>
   <div class="steps container is-fluid">
 
-      <div :id="'item-sm-' + index" v-if="stp.id != 0" v-for="(stp, index) in steps" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="stp.id" class="column packery-item step">
+      <div :id="'item-sm-' + index" v-if="stp.text !== currentindex && stp.id != 0" v-for="(stp, index) in steps" :data-clicked="stp.clicked | booleanfilt" :data-size="stp.size | booleanfilt" :index="index" :key="`stepnum-${stp.id}`" class="column packery-item step">
         <article><nuxt-link :to="`/step/${stp.id}`">
         <div class="notification step is-pink-outline is-bold">
           <figure v-if="stp.image" class="sel image is-1by1">
@@ -19,6 +19,7 @@
 
         </div></nuxt-link>
        </article>
+
       </div>
 
 </div>
@@ -27,7 +28,7 @@
 <script>
 import fitText from '~/components/fitText.vue'
 export default {
-  props: ['steps'],
+  props: ['steps','currentindex'],
   components: {
 fitText
     },
